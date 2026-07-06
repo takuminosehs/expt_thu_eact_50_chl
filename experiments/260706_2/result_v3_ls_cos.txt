@@ -1,0 +1,5 @@
+=== THUE-ACT-50 CHL HoloEv-Net-V3 (4-Ch) LS + Cosine Annealing ===
+Model Params: 11.54 M
+Model FLOPs: 2.26 G
+Inference Latency: 35.39 ms
+=================================================

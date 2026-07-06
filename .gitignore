@@ -1,5 +1,6 @@
 # my setting
 data/
+processed_data/
 *.npy
 *.mp4
 

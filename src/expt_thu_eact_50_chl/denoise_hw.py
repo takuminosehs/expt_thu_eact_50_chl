@@ -145,6 +145,24 @@ def denoise_event_file(
     return output_path
 
 
+def convert_labels_file(input_path, output_path, suffix):
+    with open(input_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    
+    new_lines = []
+    for line in lines:
+        # 空行でなければ処理
+        if line.strip():
+            # '.npy' を '_hw_filtered.npy' に置換
+            new_line = line.replace('.npy', f'{suffix}.npy')
+            new_lines.append(new_line)
+            
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.writelines(new_lines)
+    
+    print(f"変換が完了しました: {output_path}")
+
+
 if __name__ == "__main__":
     # 使用例：config.pyに定義されたディレクトリからサンプルを処理する場合
     # ※実際のファイル名に合わせて変更してください
