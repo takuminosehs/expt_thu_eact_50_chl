@@ -7,4 +7,7 @@ SCRIPTS_DIR = PROJECT_ROOT / "scripts"
 # データソースとして使えるディレクトリ群（オーギュメンテーション後データ含む）
 ORIGINAL_DATA_DIR = PROJECT_ROOT / "data" / "THU-EACT-50-CHL"
 
-HW_DENOISED_DATA_DIR = PROJECT_ROOT/ "experiments" / "260706_1" / "result"
+HW_DENOISED_DATA_DIR = PROJECT_ROOT / "experiments" / "260706_1" / "result"
+HW_DENOISED_DT20_DATA_DIR = PROJECT_ROOT / "experiments" / "260706_3" / "result"
+HW_DENOISED_DT80_DATA_DIR = PROJECT_ROOT / "experiments" / "260706_5" / "result"
+HW_DENOISED_NOPSI_DATA_DIR = PROJECT_ROOT / "experiments" / "260706_7" / "result"

@@ -3,6 +3,9 @@ data/
 processed_data/
 *.npy
 *.mp4
+*.pth
+
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
