@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Optional
 import numpy as np
 import numba
-
+from dataclasses import dataclass
 # 制約: config.pyのインポート（プロジェクトルートからの相対/絶対パスを通す前提）
 # import sys
 # PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -75,6 +75,19 @@ def _local_spatiotemporal_denoise_jit(
             
     return mask
 
+@dataclass
+class DenoiseResult:
+    """ノイズ除去処理の結果を格納するデータクラス"""
+    output_path: Path
+    original_count: int
+    filtered_count: int
+
+    @property
+    def reduction_rate(self) -> float:
+        """削減率を計算して返す"""
+        if self.original_count == 0:
+            return 0.0
+        return (1 - self.filtered_count / self.original_count) * 100
 
 def denoise_event_file(
     input_path: Path, 
@@ -130,19 +143,28 @@ def denoise_event_file(
     else:
         dt = int(dt_ms * 1000) # デフォルトはマイクロ秒
         
-    print(f"[INFO] フィルタリング処理を開始します... (イベント数: {events.shape[0]})")
+    original_count = events.shape[0]
+    print(f"[INFO] フィルタリング処理を開始します... (イベント数: {original_count})")
     
     # 高速ノイズ除去の実行
     mask = _local_spatiotemporal_denoise_jit(events, L=L, dt=dt, psi=psi)
     filtered_events = events[mask]
+    filtered_count = filtered_events.shape[0]
     
-    print(f"[INFO] 処理完了: {events.shape[0]} -> {filtered_events.shape[0]} イベント (削減率: {(1 - filtered_events.shape[0]/events.shape[0])*100:.2f}%)")
+    # DenoiseResultオブジェクトを生成して削減率を計算させる
+    result = DenoiseResult(
+        output_path=output_path,
+        original_count=original_count,
+        filtered_count=filtered_count
+    )
+
+    print(f"[INFO] 処理完了: {original_count} -> {filtered_count} イベント (削減率: {result.reduction_rate:.2f}%)")
     
     # 結果の保存
     output_path.parent.mkdir(parents=True, exist_ok=True)
     np.save(output_path, filtered_events)
     
-    return output_path
+    return result
 
 
 def convert_labels_file(input_path, output_path, suffix):

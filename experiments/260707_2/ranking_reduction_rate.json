@@ -1,0 +1,96 @@
+{
+    "top_reductions": [
+        {
+            "rank": 1,
+            "status": "success",
+            "input_file": "A19P25C0-2021_11_08_11_16_32.npy",
+            "output_file": "A19P25C0-2021_11_08_11_16_32_hw_filtered.npy",
+            "original_count": 14393,
+            "filtered_count": 681,
+            "reduction_rate_percent": 95.26853331480581
+        },
+        {
+            "rank": 2,
+            "status": "success",
+            "input_file": "A18P10C0-2021_11_04_12_39_26.npy",
+            "output_file": "A18P10C0-2021_11_04_12_39_26_hw_filtered.npy",
+            "original_count": 45933,
+            "filtered_count": 2241,
+            "reduction_rate_percent": 95.12115472536084
+        },
+        {
+            "rank": 3,
+            "status": "success",
+            "input_file": "A20P25C0-2021_11_08_11_17_13.npy",
+            "output_file": "A20P25C0-2021_11_08_11_17_13_hw_filtered.npy",
+            "original_count": 7357,
+            "filtered_count": 405,
+            "reduction_rate_percent": 94.49503873861629
+        },
+        {
+            "rank": 4,
+            "status": "success",
+            "input_file": "A18P12C0-2021_11_05_14_16_05.npy",
+            "output_file": "A18P12C0-2021_11_05_14_16_05_hw_filtered.npy",
+            "original_count": 15333,
+            "filtered_count": 855,
+            "reduction_rate_percent": 94.42379182156134
+        },
+        {
+            "rank": 5,
+            "status": "success",
+            "input_file": "A18P10C1-2021_11_04_12_39_42.npy",
+            "output_file": "A18P10C1-2021_11_04_12_39_42_hw_filtered.npy",
+            "original_count": 42873,
+            "filtered_count": 2406,
+            "reduction_rate_percent": 94.38807641172767
+        }
+    ],
+    "bottom_reductions": [
+        {
+            "rank": 1,
+            "status": "success",
+            "input_file": "A58P10C2-2021_11_04_13_05_57.npy",
+            "output_file": "A58P10C2-2021_11_04_13_05_57_hw_filtered.npy",
+            "original_count": 1177272,
+            "filtered_count": 1059712,
+            "reduction_rate_percent": 9.985797674624042
+        },
+        {
+            "rank": 2,
+            "status": "success",
+            "input_file": "A58P10C1-2021_11_04_13_05_51.npy",
+            "output_file": "A58P10C1-2021_11_04_13_05_51_hw_filtered.npy",
+            "original_count": 1180977,
+            "filtered_count": 1049840,
+            "reduction_rate_percent": 11.104111257035488
+        },
+        {
+            "rank": 3,
+            "status": "success",
+            "input_file": "A58P24C0-2021_11_08_10_21_27.npy",
+            "output_file": "A58P24C0-2021_11_08_10_21_27_hw_filtered.npy",
+            "original_count": 651670,
+            "filtered_count": 565019,
+            "reduction_rate_percent": 13.296760630380412
+        },
+        {
+            "rank": 4,
+            "status": "success",
+            "input_file": "A58P13C0-2021_11_05_15_39_41.npy",
+            "output_file": "A58P13C0-2021_11_05_15_39_41_hw_filtered.npy",
+            "original_count": 391719,
+            "filtered_count": 336650,
+            "reduction_rate_percent": 14.05829178569331
+        },
+        {
+            "rank": 5,
+            "status": "success",
+            "input_file": "A58P10C0-2021_11_04_13_05_39.npy",
+            "output_file": "A58P10C0-2021_11_04_13_05_39_hw_filtered.npy",
+            "original_count": 1111225,
+            "filtered_count": 954918,
+            "reduction_rate_percent": 14.066188215707886
+        }
+    ]
+}

@@ -1,6 +1,5 @@
-# train.py (v-3 with Label Smoothing + Cosine Annealing)
-import os
-import glob
+# train.py (v-3 with Dynamic Channels + Label Smoothing + Cosine Annealing)
+import sys
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -9,38 +8,56 @@ import numpy as np
 import torchvision.models as models
 from pathlib import Path
 
-# utils.py が配置されている前提です
-from expt_thu_eact_50_chl.utils import measure_model_complexity, measure_inference_latency, calculate_topk_accuracy, save_best_model
+# プロジェクトルートのパス解決
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+
+from expt_thu_eact_50_chl.utils import (
+    measure_model_complexity, 
+    measure_inference_latency, 
+    calculate_topk_accuracy, 
+    save_best_model
+)
+
+# ====================================================
+# 学習設定（手動で実験したいチャネル数に合わせます）
+# ====================================================
+NUM_CHANNELS = 3  # 🌟 3 または 4 に手動で切り替え（make_dataset.pyと合わせてください）
 
 CURRENT_DIR = Path(__file__).parent.resolve()
 PROCESSED_DIR = CURRENT_DIR / "processed_data"
-MODEL_SAVE_PATH = CURRENT_DIR / "best_model.pth"
+MODEL_SAVE_PATH = CURRENT_DIR / f"best_model_ch{NUM_CHANNELS}.pth"
+
 
 # ====================================================
-# 1. 専用データセットクラス
+# 1. 専用データセットクラス（指定チャネル数のみをフィルタリング）
 # ====================================================
 class HoloEvDataset(Dataset):
-    def __init__(self, mode="train"):
+    def __init__(self, mode="train", num_channels=NUM_CHANNELS):
         self.dir_path = PROCESSED_DIR / mode
-        self.file_paths = glob.glob(os.path.join(self.dir_path, "*_orig_*.npy"))
+        # 作成したチャネル数に一致するファイルのみを取得
+        self.file_paths = list(self.dir_path.glob(f"*_ch{num_channels}_label_*.npy"))
+        if len(self.file_paths) == 0:
+            raise FileNotFoundError(f"⚠️ 指定されたチャネル数 ch{num_channels} のデータが {self.dir_path} に見つかりません。")
         
     def __len__(self):
         return len(self.file_paths)
         
     def __getitem__(self, idx):
         file_path = self.file_paths[idx]
-        label_str = file_path.split("_label_")[-1].split(".npy")[0]
+        label_str = file_path.name.split("_label_")[-1].split(".npy")[0]
         label = int(label_str.replace("A", ""))
         
-        # v-3 の 4チャネル CHSR 配列
         features = np.load(file_path)
         
-        # 最大値による正規化（高精度レシピ）
+        # 最大値による正規化
         max_val = np.max(np.abs(features))
         if max_val > 0:
             features = features / max_val
             
         return torch.tensor(features, dtype=torch.float32), torch.tensor(label, dtype=torch.long)
+
 
 # ====================================================
 # 2. Global Spectral Gating (GSG) モジュール
@@ -64,16 +81,17 @@ class GlobalSpectralGating(nn.Module):
         gate = torch.sigmoid(self.gate_conv(z_tilde))
         return carrier * gate
 
+
 # ====================================================
-# 3. HoloEv-Net 本体 (4チャネル入力 ResNet-18)
+# 3. HoloEv-Net 本体 (可変チャネル入力 ResNet-18)
 # ====================================================
 class HoloEvNetBaseV3(nn.Module):
-    def __init__(self, num_classes=50):
+    def __init__(self, in_channels=NUM_CHANNELS, num_classes=50):
         super().__init__()
         resnet = models.resnet18(weights=None)
         
-        # 4チャネル入力
-        self.conv1 = nn.Conv2d(4, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        # 🌟 入力チャネル数を動的に変更可能に
+        self.conv1 = nn.Conv2d(in_channels, 64, kernel_size=7, stride=2, padding=3, bias=False)
         self.bn1 = resnet.bn1
         self.relu = resnet.relu
         self.maxpool = resnet.maxpool
@@ -104,57 +122,50 @@ class HoloEvNetBaseV3(nn.Module):
         feat = self.avgpool(x_out).view(x_out.size(0), -1)
         return self.classifier(feat)
 
+
 # ====================================================
 # 4. 学習ループ
 # ====================================================
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"使用デバイス: {device}")
+    print(f"使用デバイス: {device} | ターゲット入力チャネル数: {NUM_CHANNELS}")
     
-    INPUT_SIZE = (1, 4, 224, 260)
+    INPUT_SIZE = (1, NUM_CHANNELS, 224, 260)
     NUM_CLASSES = 50
-    num_epochs = 100 # 🌟コサイン波でじっくり減衰させるため、100エポック回します
+    num_epochs = 100 
     
-    model = HoloEvNetBaseV3(num_classes=NUM_CLASSES).to(device)
+    model = HoloEvNetBaseV3(in_channels=NUM_CHANNELS, num_classes=NUM_CLASSES).to(device)
     
     macs, params = measure_model_complexity(model, input_size=INPUT_SIZE, device=device)
     latency_ms = measure_inference_latency(model, input_size=INPUT_SIZE, device=device)
     
-    train_dataset = HoloEvDataset(mode="train")
-    test_dataset = HoloEvDataset(mode="test")
+    train_dataset = HoloEvDataset(mode="train", num_channels=NUM_CHANNELS)
+    test_dataset = HoloEvDataset(mode="test", num_channels=NUM_CHANNELS)
     
     train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True, num_workers=4, pin_memory=True, drop_last=True)
     test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False, num_workers=4, pin_memory=True)
     
-    # 成果を出した Label Smoothing
     criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
-    
     optimizer = torch.optim.AdamW(model.parameters(), lr=0.0003, weight_decay=0.01)
-    
-    # 🌟 今回追加する学習率スケジューラ (Cosine Annealing)
-    # T_max は減衰がゼロに達するまでのステップ数（エポック数）を指定します
-    # eta_min は最小学習率（ここでは完全にゼロまで落とします）
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=num_epochs, eta_min=0)
     
     best_test_acc1 = 0.0
-    log_filename = CURRENT_DIR / "result.txt"
+    log_filename = CURRENT_DIR / f"result_ch{NUM_CHANNELS}.txt"
 
     with open(log_filename, "w", encoding="utf-8") as f:
-        f.write("=== THUE-ACT-50 CHL HoloEv-Net-V3 (4-Ch) LS + Cosine Annealing ===\n")
+        f.write(f"=== THUE-ACT-50 CHL HoloEv-Net-V3 ({NUM_CHANNELS}-Ch) LS + Cosine ===\n")
         if params is not None:
             f.write(f"Model Params: {params/1e6:.2f} M\n")
             f.write(f"Model FLOPs: {macs/1e9:.2f} G\n")
         f.write(f"Inference Latency: {latency_ms:.2f} ms\n")
         f.write("=================================================\n")
             
-        print(f"🚀 V3 (4チャネル) + LS + Cosine スケジューラによる最終特訓を開始します")
+        print(f"🚀 V3 ({NUM_CHANNELS}チャネル) + LS + Cosine スケジューラによる特訓を開始します")
         
         for epoch in range(num_epochs):
             model.train()
             train_loss, train_total = 0.0, 0
             train_top1, train_top5 = 0.0, 0.0
-            
-            # 現在のエポックの学習率を取得して表示
             current_lr = optimizer.param_groups[0]['lr']
             
             for features, labels in train_loader:
@@ -171,7 +182,6 @@ if __name__ == "__main__":
                 train_top1 += acc1
                 train_top5 += acc5
                 
-            # 🌟 エポックの終了時にスケジューラを更新（学習率をコサイン波に従って減衰）
             scheduler.step()
                 
             model.eval()
@@ -202,4 +212,4 @@ if __name__ == "__main__":
             best_test_acc1 = save_best_model(model, te_acc1_pct, best_test_acc1, MODEL_SAVE_PATH)
             f.flush()
 
-    print(f"\n🎉 すべての学習が完了しました！最高の Test Top-1 精度は {best_test_acc1:.2f}% でした。")
+    print(f"\n🎉 実験完了！最高 Test Top-1 ({NUM_CHANNELS}Ch): {best_test_acc1:.2f}%")
