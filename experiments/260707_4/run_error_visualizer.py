@@ -20,7 +20,7 @@ if __name__ == "__main__":
     error_video_dir = current_dir / "result" / "error_videos"
     
     # 🌟 確信度の高い順に何本動画化するかを指定
-    NUM_VIDEOS_TO_GENERATE = 10
+    NUM_VIDEOS_TO_GENERATE = 50
     
     # 実行
     visualize_confident_errors(
