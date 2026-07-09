@@ -1,7 +1,6 @@
 # experiments/260707_4/run_error_visualizer.py
 import sys
 from pathlib import Path
-from expt_thu_eact_50_chl import config
 
 # プロジェクトルートのパス解決
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -27,6 +26,5 @@ if __name__ == "__main__":
     visualize_confident_errors(
         json_path=analysis_json,
         output_dir=error_video_dir,
-        num_videos=NUM_VIDEOS_TO_GENERATE,
-        target_npy_dir=config.HW_DENOISED_NOPSI_DATA_DIR
+        num_videos=NUM_VIDEOS_TO_GENERATE
     )

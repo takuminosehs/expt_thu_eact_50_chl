@@ -6,27 +6,29 @@ import cv2
 from tqdm import tqdm
 from pathlib import Path
 import expt_thu_eact_50_chl.config as config
+
+import re
 # プロジェクトルートのパス解決とインポート環境の整備
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 def _extract_original_filename(processed_filename: str) -> str:
     """
-    変換後データの名前から、大元のノイズ除去済みファイル名を逆引き抽出する
-    例: "63_A45P22C2-2021_11_07_11_58_38_hw_filtered_ch4_label_13.npy" 
-    -> "A45P22C2-2021_11_07_11_58_38_hw_filtered.npy"
-    """
-    # 最初のインデックス番号（例: "63_"）を剥ぎ取る
-    if "_" in processed_filename:
-        remains = processed_filename.split("_", 1)[1]
-    else:
-        remains = processed_filename
-
-    # 後ろのチャネル・ラベル情報（例: "_ch4_label_13.npy"）を剥ぎ取る
-    if "_ch" in remains:
-        original_stem = remains.split("_ch")[0]
-        return f"{original_stem}.npy"
+    ファイル名から特定のパターン（A...-20...）にマッチする部分を抽出する
     
-    return remains
+    例: "63_A45P22C2-2021_11_07_11_58_38_hw_filtered_ch4_label_13.npy" 
+    -> "A45P22C2-2021_11_07_11_58_38"
+    """
+    # 条件：A{数字}P{数字}C{数字}-20{数字}_{数字}_{数字}_{数字}_{数字}_{数字}
+    pattern = r"A\d+P\d+C\d+-20\d+_\d+_\d+_\d+_\d+_\d+"
+    # 最初のインデックス番号（例: "63_"）を剥ぎ取る
+    match = re.search(pattern, processed_filename)
+    if not match:
+        raise ValueError(
+            f"ファイル名のパターン抜き出しに失敗しました。 "
+            f"パターンに一致する文字列が見つかりません。 (対象: '{processed_filename}')"
+        )
+        
+    return match.group(0)
 
 
 def generate_error_video(
@@ -113,7 +115,8 @@ def generate_error_video(
 def visualize_confident_errors(
     json_path: Path, 
     output_dir: Path, 
-    num_videos: int = 10
+    num_videos: int | str = 10,
+    target_npy_dir: Path = config.ORIGINAL_DATA_DIR
 ) -> None:
     """
     JSON結果を読み込み、誤答(false)データを確信度が高い順にソートし、指定本数を動画化する
@@ -137,21 +140,30 @@ def visualize_confident_errors(
         
     # 2. 確信度 (confidence) が高い順（降順）に並び替え
     error_records.sort(key=lambda x: x.get("confidence", 0.0), reverse=True)
-    
-    # 指定本数にスライス
-    targets = error_records[:num_videos]
-    print(f"🎬 確信度の高い上位 {len(targets)} 件の誤答データを動画化します...")
+
+    if isinstance(num_videos, str) and num_videos.lower() == "all":
+        targets = error_records
+        print(f"🎬 すべての誤答データ {len(targets)} 件を動画化します...")
+    else:
+        # 指定本数にスライス
+        targets = error_records[:num_videos]
+        print(f"🎬 確信度の高い上位 {len(targets)} 件の誤答データを動画化します...")
     
     # 3. 大元データの検索と動画化ループ
     # config.py で定義された大元ノイズ除去データディレクトリをベースにする
-    source_dir = config.HW_DENOISED_NOPSI_DATA_DIR
+    source_dir = target_npy_dir
     
     for idx, item in enumerate(targets):
         processed_filename = item["filename"]
-        orig_filename = _extract_original_filename(processed_filename)
+
+        try:
+            orig_filename = _extract_original_filename(processed_filename)
+        except ValueError as e:
+            print(f"[WARNING] {e}")
+            continue
         
         # 大元ディレクトリ配下から再帰的に該当ファイルを探索（サブフォルダ対策）
-        found_paths = list(source_dir.rglob(orig_filename))
+        found_paths = list(source_dir.rglob(f"*{orig_filename}*.npy"))
         
         if not found_paths:
             print(f"⚠️ 警告: 大元ファイルがディレクトリ '{source_dir.name}' 内に見つかりません: {orig_filename}")
@@ -162,7 +174,7 @@ def visualize_confident_errors(
         # 出力動画ファイル名の定義
         # ランキング順位、元ファイル名、確信度をファイル名に含めて分かりやすく保存します
         conf_pct = int(item['confidence'] * 100)
-        out_mp4_name = f"rank{idx+1:02d}_conf{conf_pct:02d}_GT{item['ground_truth']}_Pred{item['predicted']}_{target_npy_path.stem}.mp4"
+        out_mp4_name = f"GT{item['ground_truth']}_Pred{item['predicted']}_{target_npy_path.stem}_rank{idx+1:02d}_conf{conf_pct:02d}.mp4"
         output_mp4_path = output_dir / out_mp4_name
         
         print(f"[{idx+1}/{len(targets)}] レンダリング中: {out_mp4_name}")

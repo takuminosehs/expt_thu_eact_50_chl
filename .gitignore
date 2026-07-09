@@ -4,7 +4,8 @@ processed_data/
 *.npy
 *.mp4
 *.pth
-
+*.xlsx
+*.pdf
 
 
 # Byte-compiled / optimized / DLL files
