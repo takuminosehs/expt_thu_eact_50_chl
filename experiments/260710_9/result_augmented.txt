@@ -1,0 +1,7 @@
+=== THUE-ACT-50 CHL (Data Augmented Pipeline) ===
+Model Params: 11.54 M
+Model FLOPs: 2.26 G
+Inference Latency: 3.26 ms
+=================================================
+Epoch 001/100 [LR: 0.000300] -> Loss: 1.5241 | Train Top-1: 75.96% (Top-5: 91.59%)| ★Test Top-1: 63.42% (Top-5: 90.62%)
+Epoch 002/100 [LR: 0.000300] -> Loss: 0.7805 | Train Top-1: 99.66% (Top-5: 100.00%)| ★Test Top-1: 69.67% (Top-5: 89.52%)

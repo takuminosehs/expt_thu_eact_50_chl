@@ -10,12 +10,13 @@ def visualize_event_velocity(
     bg_mode: str = "time_surface",
     scaling_mode: str = "log",
     scale: float = 15.0,
+    grid_size: int = 8,  # 🌟 追加：間引き用の空間グリッドサイズ
     fps: float = 30.0,
     T_bins: int = 224,
     H: int = 260,
     W: int = 346,
 ):
-    """非線形スケーリングを用いて、大小の矢印の視認性を極限まで高めた速度ベクトル可視化"""
+    """非線形スケーリングと空間グリッドサンプリングを用いて、運動方向の視認性を極限まで高めたSobel勾配可視化"""
     print(f"📦 データを読み込み中: {input_npy}")
     events = np.load(input_npy)
 
@@ -45,7 +46,7 @@ def visualize_event_velocity(
 
     time_surface = np.zeros((H, W), dtype=np.float32)
 
-    print(f"🎬 動画生成を開始します（背景: {bg_mode}, スケールモード: {scaling_mode}）")
+    print(f"🎬 動画生成を開始します（背景: {bg_mode}, スケールモード: {scaling_mode}, グリッドサイズ: {grid_size}px）")
 
     for b in tqdm(range(T_bins), desc="Generating Frames"):
         bin_mask = t_indices == b
@@ -74,29 +75,33 @@ def visualize_event_velocity(
 
         # 速度ベクトルの描画
         if len(bin_xs) > 0:
+            # 🌟 各フレームビンごとに描画済みグリッドの記録セットをリセット
+            plotted_grids = set()
+
             for x, y in zip(bin_xs, bin_ys):
+                # 🌟 現在のピクセル座標 (x, y) がどの格子に属するかを算出
+                grid_x = x // grid_size
+                grid_y = y // grid_size
+                grid_coord = (grid_x, grid_y)
+
+                # 🌟 すでにこの格子に矢印を描画済みの場合は、密集を防ぐためスキップ
+                if grid_coord in plotted_grids:
+                    continue
+
                 raw_dx = gx[y, x]
                 raw_dy = gy[y, x]
                 magnitude = np.sqrt(raw_dx**2 + raw_dy**2)
 
                 if magnitude > 1e-5:
-                    # --- 🌟 非線形ダイナミックレンジ圧縮の核心部分 🌟 ---
                     if scaling_mode == "log":
-                        # 1. 対数スケーリング（最もおすすめ）
-                        # 小さい値（高速移動）を底上げし、大きい値（低速・ノイズ）を強く抑制します
                         new_magnitude = np.log1p(magnitude * 10) * scale
                     elif scaling_mode == "sqrt":
-                        # 2. 平方根スケーリング
-                        # マイルドに大小の格差を縮めます
                         new_magnitude = np.sqrt(magnitude) * scale
                     elif scaling_mode == "fixed":
-                        # 3. 固定長スケーリング
-                        # 大小関係を完全に無視し、すべての矢印を「同じ長さ（scale）」にして方向だけを見せます
                         new_magnitude = scale
                     else:
                         new_magnitude = magnitude * scale
 
-                    # 方向ベクトルを維持したまま、新しい長さに再計算
                     dx = (raw_dx / magnitude) * new_magnitude
                     dy = (raw_dy / magnitude) * new_magnitude
 
@@ -104,8 +109,6 @@ def visualize_event_velocity(
                     end_pt = (int(x + dx), int(y + dy))
 
                     if start_pt != end_pt:
-                        # 本来の「生勾配の大きさ」に応じて矢印の色を変化させるとさらに見やすくなります
-                        # 小さい（高速）= 緑（0, 255, 0） / 大きい（低速）= 黄（0, 255, 255）
                         color = (0, 255, 0) if magnitude < 0.5 else (0, 255, 255)
                         
                         cv2.arrowedLine(
@@ -116,6 +119,9 @@ def visualize_event_velocity(
                             thickness=1,
                             tipLength=0.3,
                         )
+                        
+                        # 🌟 描画に成功したら、この格子を「描画済み」として登録
+                        plotted_grids.add(grid_coord)
 
         video_writer.write(frame)
 
@@ -124,7 +130,7 @@ def visualize_event_velocity(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Event Stream Velocity Vector Visualizer")
+    parser = argparse.ArgumentParser(description="Event Stream Velocity Vector Visualizer (Grid Downsampled)")
     parser.add_argument("--input", type=str, required=True, help="対象とする入力 .npy ファイルのパス")
     parser.add_argument("--output", type=str, required=True, help="出力する .mp4 ファイルのパス")
     parser.add_argument(
@@ -140,7 +146,8 @@ if __name__ == "__main__":
         default="log",
         help="スケーリング方法: log(対数), sqrt(平方根), fixed(一律固定長), linear(前回の線形)",
     )
-    parser.add_argument("--scale", type=float, default=15.0, help="矢印のベース長さ（fixedの時はそのまま矢印のピクセル長になります）")
+    parser.add_argument("--scale", type=float, default=15.0, help="矢印のベース長さ")
+    parser.add_argument("--grid-size", type=int, default=8, help="間引きの格子サイズ（px）。値を大きくするほどスカスカになります。")
 
     args = parser.parse_args()
 
@@ -150,4 +157,5 @@ if __name__ == "__main__":
         bg_mode=args.bg_mode,
         scaling_mode=args.scaling_mode,
         scale=args.scale,
+        grid_size=args.grid_size,
     )

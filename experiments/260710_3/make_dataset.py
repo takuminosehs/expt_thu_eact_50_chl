@@ -4,7 +4,7 @@ import glob
 import numpy as np
 from tqdm import tqdm
 from pathlib import Path
-from expt_thu_eact_50_chl.config import ORIGINAL_DATA_DIR
+from expt_thu_eact_50_chl.config import HW_DENOISED_NOPSI_DATA_DIR
 
 # --- 共有ライブラリ (.so) を正常にロードするためのパス設定 ---
 CURRENT_DIR = Path(__file__).parent.resolve()
@@ -14,7 +14,7 @@ sys.path.append(str(CURRENT_DIR))
 # ビルドしたC++/CUDA高速ノーマルフロー抽出器をインポート
 from VecKM_flow import SliceNormalFlowEstimator
 
-data_dir = ORIGINAL_DATA_DIR
+data_dir = HW_DENOISED_NOPSI_DATA_DIR
 PROCESSED_DIR = CURRENT_DIR / "processed_data"
 MODEL_DIR = CURRENT_DIR / "640x480_24ms_C64_k8"
 
