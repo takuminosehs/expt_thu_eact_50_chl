@@ -6,6 +6,7 @@ processed_data/
 *.pth
 *.xlsx
 *.pdf
+*.png
 
 
 # Byte-compiled / optimized / DLL files

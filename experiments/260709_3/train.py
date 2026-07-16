@@ -127,8 +127,9 @@ class HoloEvNetBaseV4_SpatialOnly(nn.Module):
         
         # 深い層に対して、ユーザー提案の「空間アテンションのみ」を適用
         self.layer3 = resnet.layer3
-        self.spatial3 = SpatialAttentionOnly(kernel_size=7)
+        # self.spatial3 = SpatialAttentionOnly(kernel_size=7)
         
+        # 深い層に対して、ユーザー提案の「空間アテンションのみ」を適用
         self.layer4 = resnet.layer4
         self.spatial4 = SpatialAttentionOnly(kernel_size=7)
         
@@ -146,7 +147,7 @@ class HoloEvNetBaseV4_SpatialOnly(nn.Module):
         x = self.layer2(x)
         
         x = self.layer3(x)
-        self.spatial3(x)
+        # self.spatial3(x)
         
         x_in = self.layer4(x)
         x_in = self.spatial4(x_in)
