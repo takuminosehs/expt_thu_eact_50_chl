@@ -13,8 +13,6 @@ from expt_thu_eact_50_chl.utils import (
     calculate_topk_accuracy,
     save_best_model,
 )
-# 自作SAMオプティマイザのインポート
-from expt_thu_eact_50_chl.sam import SAM
 
 # ====================================================
 # ─── ⚙️ 4-Stage ハイパーパラメータ設定 ───
@@ -37,13 +35,11 @@ STAGE4_LR_GATING = 0.0005
 
 NUM_EPOCHS = STAGE1_EPOCHS + STAGE2_EPOCHS + STAGE3_EPOCHS + STAGE4_EPOCHS
 CURRENT_DIR = Path(__file__).parent.resolve()
+# PROCESSED_DIR = CURRENT_DIR / "processed_data"
 PROCESSED_DIR = CURRENT_DIR.parent / "260713_7" / "processed_data"
 
 MODEL_SAVE_PATH = CURRENT_DIR / "best_model_augmented.pth"
 LOG_FILENAME = CURRENT_DIR / "result_augmented.txt"
-
-# 事前学習済み重みの格納先パス（Q1回答より）
-PRETRAINED_MODEL_PATH = CURRENT_DIR.parent / "260714_3" / "best_model_augmented.pth"
 
 
 class HoloEvTwinFolderDataset(Dataset):
@@ -139,7 +135,7 @@ class HoloEvNetClassWiseGated(nn.Module):
         self.l_avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.l_classifier = nn.Linear(512, num_classes)
 
-        # 出力を num_classes * 2 に拡張
+        # ★ 【アーキテクチャ拡張】出力を num_classes * 2 (50クラス×2系統) に拡張
         self.gating_layer = nn.Sequential(
             nn.Linear(512, 128), 
             nn.ReLU(), 
@@ -195,56 +191,17 @@ class HoloEvNetClassWiseGated(nn.Module):
             alpha_l = torch.ones((x_global.size(0), self.num_classes), device=x_global.device)
             return y_local, alpha_g, alpha_l
 
-        # クラス別アテンション
+        # ★ 【クラス別アテンションの数理計算】
+        # (Batch, 100) -> (Batch, 50, 2) に変形し、各クラスごとにSoftmaxを適用
         gate_logits = self.gating_layer(feat_global).view(-1, self.num_classes, 2)
         gate_weights = F.softmax(gate_logits, dim=2)
         
+        # alpha_g, alpha_l の形状は共に (Batch, 50)
         alpha_g, alpha_l = gate_weights[:, :, 0], gate_weights[:, :, 1]
+        
+        # 各クラスの予測ロジットに対して個別に重み付け融合を行う
         y_final = alpha_g * y_global + alpha_l * y_local
         return y_final, alpha_g, alpha_l
-
-
-def load_pretrained_weights(model, weight_path: Path, device, strict: bool = True):
-    """
-    事前学習済み重みをロードする汎用関数。
-    strict=True の場合は全パラメータが完全一致。
-    strict=False の場合は構造が変化した部分（転移学習や構造拡張時など）を無視して部分一致ロードを行う。
-    """
-    if not weight_path.exists():
-        print(f"⚠️ 警告: 指定されたパスに重みファイルが存在しません: {weight_path}")
-        return
-
-    print(f"🔄 重みファイルをロード中: {weight_path} (strict={strict})")
-    state_dict = torch.load(weight_path, map_location=device)
-
-    if strict:
-        model.load_state_dict(state_dict, strict=True)
-        print("✅ 全ての重みを完全にロードしました。")
-    else:
-        # 部分ロード (strict=False) の実装例
-        model_dict = model.state_dict()
-        
-        # キーとテンソルサイズが完全に一致する項目のみにフィルタリング
-        filtered_dict = {
-            k: v for k, v in state_dict.items()
-            if k in model_dict and v.shape == model_dict[k].shape
-        }
-        
-        missing_keys = set(model_dict.keys()) - set(filtered_dict.keys())
-        mismatched_keys = [
-            k for k in state_dict.keys()
-            if k in model_dict and state_dict[k].shape != model_dict[k].shape
-        ]
-        
-        print(f"📊 ロード対象数: {len(filtered_dict)} / モデル全重み数: {len(model_dict)}")
-        if missing_keys:
-            print(f"ℹ️ ロードされなかったキー (新規層など): {list(missing_keys)[:5]}...")
-        if mismatched_keys:
-            print(f"⚠️ サイズが不一致でロードできなかったキー: {mismatched_keys}")
-            
-        model_dict.update(filtered_dict)
-        model.load_state_dict(model_dict, strict=False)
-        print("✅ 一致するパラメータの部分ロードが完了しました。")
 
 
 if __name__ == "__main__":
@@ -253,49 +210,27 @@ if __name__ == "__main__":
 
     model = HoloEvNetClassWiseGated(num_classes=50).to(device)
     
-    # 事前学習済み重みのロード (Q2に基づき strict=True で読み込み)
-    # ※部分的にロードしたい場合は、引数 strict=False に変更してください。
-    load_pretrained_weights(model, PRETRAINED_MODEL_PATH, device, strict=True)
+    train_loader = DataLoader(HoloEvTwinFolderDataset(mode="train"), batch_size=16, shuffle=True, num_workers=4, pin_memory=True, drop_last=True)
+    test_loader = DataLoader(HoloEvTwinFolderDataset(mode="test"), batch_size=16, shuffle=False, num_workers=4, pin_memory=True)
 
-    train_loader = DataLoader(
-        HoloEvTwinFolderDataset(mode="train"), 
-        batch_size=16, 
-        shuffle=True, 
-        num_workers=4, 
-        pin_memory=True, 
-        drop_last=True
-    )
-    test_loader = DataLoader(
-        HoloEvTwinFolderDataset(mode="test"), 
-        batch_size=16, 
-        shuffle=False, 
-        num_workers=4, 
-        pin_memory=True
-    )
-
-    # パラメータの定義分け
     global_params, local_params, gating_params = [], [], []
     for n, p in model.named_parameters():
         if "gating_layer" in n: gating_params.append(p)
         elif n.startswith("g_"): global_params.append(p)
         elif n.startswith("l_"): local_params.append(p)
 
-    # パラメータグループの設計
-    optimizer_groups = [
+    optimizer = torch.optim.AdamW([
         {"params": global_params, "lr": 0.0, "weight_decay": 0.01},
         {"params": local_params, "lr": 0.0, "weight_decay": 0.01},
         {"params": gating_params, "lr": 0.0, "weight_decay": 0.0}
-    ]
-
-    # SAMオプティマイザの初期化 (ベースオプティマイザ: AdamW, 近傍サイズ rho=0.05)
-    optimizer = SAM(optimizer_groups, torch.optim.AdamW, rho=0.05)
+    ])
 
     criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
     scaler = torch.amp.GradScaler()
     best_test_acc1 = 0.0
 
     with open(LOG_FILENAME, "w", encoding="utf-8") as f:
-        f.write("=== Class-Wise Adaptive Fusion Training Log with SAM ===\n")
+        f.write("=== Class-Wise Adaptive Fusion Training Log ===\n")
 
         for epoch in range(NUM_EPOCHS):
             if epoch < STAGE1_EPOCHS:
@@ -333,96 +268,25 @@ if __name__ == "__main__":
             current_l_lr = optimizer.param_groups[1]["lr"]
             current_gate_lr = optimizer.param_groups[2]["lr"]
 
-            # --- Training with SAM (NaN-safe & Dual-Update) ---
+            # --- Training ---
             model.train()
             train_loss, train_total = 0.0, 0
             train_top1 = 0.0
 
             for x_g, x_l, labels in train_loader:
                 x_g, x_l, labels = x_g.to(device), x_l.to(device), labels.to(device)
-                
-                # ====================================================
-                # ─── SAM 1st step (最悪近傍点へのパラメータシフト) ───
-                # ====================================================
                 optimizer.zero_grad()
                 with torch.amp.autocast(device_type=device.type):
                     outputs, _, _ = model(x_g, x_l, mode=mode)
                     loss = criterion(outputs, labels)
-                
-                # バックプロパゲーションで通常の勾配を計算
                 scaler.scale(loss).backward()
-                
-                # 1回目のアンスケール
-                scaler.unscale_(optimizer)
-                
-                # 【安全対策1】1段階目の勾配に NaN / Inf が含まれているかチェック
-                grads_are_finite = True
-                for group in optimizer.param_groups:
-                    for p in group["params"]:
-                        if p.grad is not None:
-                            if not torch.isfinite(p.grad).all():
-                                grads_are_finite = False
-                                break
-                    if not grads_are_finite:
-                        break
+                scaler.step(optimizer)
+                scaler.update()
 
-                if grads_are_finite:
-                    # 正常な勾配の場合のみ、摂動（最悪近傍へのシフト）を追加
-                    optimizer.first_step(zero_grad=True)
-
-                    # ⭐【最重要】2段階目に進む前に、1度scaler.update()を呼んで
-                    # 「アンスケール済みフラグ」を完全にリセットします。
-                    scaler.update()
-
-                    # ====================================================
-                    # ─── SAM 2nd step (シフトした位置での勾配計算と更新) ───
-                    # ====================================================
-                    with torch.amp.autocast(device_type=device.type):
-                        outputs_adv, _, _ = model(x_g, x_l, mode=mode)
-                        loss_adv = criterion(outputs_adv, labels)
-                    
-                    scaler.scale(loss_adv).backward()
-                    
-                    # 2回目のアンスケール（直前にupdate()を呼んでいるため、エラーになりません）
-                    scaler.unscale_(optimizer)
-                    
-                    # 【安全対策2】2段階目の勾配も有限かチェック
-                    grads_are_finite_2 = True
-                    for group in optimizer.param_groups:
-                        for p in group["params"]:
-                            if p.grad is not None:
-                                if not torch.isfinite(p.grad).all():
-                                    grads_are_finite_2 = False
-                                    break
-                        if not grads_are_finite_2:
-                            break
-
-                    if grads_are_finite_2:
-                        # 両方のステップが正常であれば、パラメータを正式に更新
-                        optimizer.second_step(zero_grad=True)
-                    else:
-                        # 2段階目で異常が発生した場合は更新をキャンセルし、退避していた元の位置に重みを戻す
-                        for group in optimizer.param_groups:
-                            for p in group["params"]:
-                                if p.grad is not None and "old_p" in optimizer.state[p]:
-                                    p.data = optimizer.state[p]["old_p"]
-                        optimizer.zero_grad()
-                    
-                    # 2段階目のスケーラー更新（次のイテレーションへ備える）
-                    scaler.update()
-                else:
-                    # 1段階目の時点で異常が発生した場合は、更新せずに勾配をクリアしてスキップ
-                    optimizer.zero_grad()
-                    # ⭐スキップ時も必ず一度update()を呼び、アンスケール済みフラグのリセットと
-                    # スケーラーへの縮小シグナル（NaN検知による自動スケールダウン）を送ります。
-                    scaler.update()
-
-                # 統計の記録（NaNによる汚染を防ぐため、正常に更新できたバッチのみ集計）
-                if grads_are_finite and torch.isfinite(loss):
-                    train_loss += loss.item() * labels.size(0)
-                    train_total += labels.size(0)
-                    acc1, _ = calculate_topk_accuracy(outputs, labels, topk=(1, 5))
-                    train_top1 += acc1
+                train_loss += loss.item() * labels.size(0)
+                train_total += labels.size(0)
+                acc1, _ = calculate_topk_accuracy(outputs, labels, topk=(1, 5))
+                train_top1 += acc1
 
             # --- Validation ---
             model.eval()
@@ -452,7 +316,6 @@ if __name__ == "__main__":
             )
             print(status)
             f.write(status + "\n")
-
             best_test_acc1 = save_best_model(model, te_acc, best_test_acc1, MODEL_SAVE_PATH)
 
             if epoch + 1 == 150:
