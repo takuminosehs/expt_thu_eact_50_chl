@@ -1,0 +1,3 @@
+=== Local-Only High-Resolution Dilated ResNet18 Training Log ===
+Sampling Multiplier: 5.0x
+

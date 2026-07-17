@@ -1,3 +1,323 @@
 === Local-Only High-Resolution ResNet18 Half-Width Training Log ===
 Sampling Multiplier: 5.0x
 
+Epoch 001 [LR: 0.000300] -> Loss: 3.7004 | Train: 5.18% | ★Test: 4.96%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 0.00% (0/12)
+Epoch 002 [LR: 0.000300] -> Loss: 3.5311 | Train: 8.33% | ★Test: 4.41%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 0.00% (0/12)
+Epoch 003 [LR: 0.000300] -> Loss: 3.4857 | Train: 7.26% | ★Test: 6.25%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 0.00% (0/12)
+Epoch 004 [LR: 0.000299] -> Loss: 3.4268 | Train: 10.14% | ★Test: 6.99%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 0.00% (0/12)
+Epoch 005 [LR: 0.000298] -> Loss: 3.3850 | Train: 11.99% | ★Test: 10.85%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 0.00% (0/12)
+Epoch 006 [LR: 0.000297] -> Loss: 3.3492 | Train: 12.39% | ★Test: 11.76%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 0.00% (0/12)
+Epoch 007 [LR: 0.000296] -> Loss: 3.2893 | Train: 13.06% | ★Test: 10.11%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 16.67% (2/12)
+      Class 36: 0.00% (0/12)
+Epoch 008 [LR: 0.000294] -> Loss: 3.2621 | Train: 14.92% | ★Test: 12.87%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 58.33% (7/12)
+      Class 36: 0.00% (0/12)
+Epoch 009 [LR: 0.000293] -> Loss: 3.2405 | Train: 14.75% | ★Test: 12.68%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 41.67% (5/12)
+      Class 36: 0.00% (0/12)
+Epoch 010 [LR: 0.000291] -> Loss: 3.1719 | Train: 17.12% | ★Test: 12.68%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 0.00% (0/12)
+Epoch 011 [LR: 0.000289] -> Loss: 3.1392 | Train: 17.06% | ★Test: 11.95%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 33.33% (4/12)
+      Class 36: 8.33% (1/12)
+Epoch 012 [LR: 0.000286] -> Loss: 3.1242 | Train: 18.36% | ★Test: 16.18%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 16.67% (2/12)
+Epoch 013 [LR: 0.000284] -> Loss: 3.0584 | Train: 19.14% | ★Test: 12.87%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 25.00% (3/12)
+      Class 36: 0.00% (0/12)
+Epoch 014 [LR: 0.000281] -> Loss: 3.0532 | Train: 18.86% | ★Test: 14.52%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 16.67% (2/12)
+Epoch 015 [LR: 0.000278] -> Loss: 3.0206 | Train: 22.75% | ★Test: 14.89%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 58.33% (7/12)
+      Class 36: 8.33% (1/12)
+Epoch 016 [LR: 0.000275] -> Loss: 2.9754 | Train: 22.75% | ★Test: 14.15%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 25.00% (3/12)
+      Class 36: 33.33% (4/12)
+Epoch 017 [LR: 0.000271] -> Loss: 2.9431 | Train: 23.76% | ★Test: 13.60%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 16.67% (2/12)
+      Class 36: 16.67% (2/12)
+Epoch 018 [LR: 0.000268] -> Loss: 2.9189 | Train: 24.38% | ★Test: 16.18%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 41.67% (5/12)
+      Class 36: 0.00% (0/12)
+Epoch 019 [LR: 0.000264] -> Loss: 2.8506 | Train: 25.73% | ★Test: 15.44%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 41.67% (5/12)
+      Class 36: 0.00% (0/12)
+Epoch 020 [LR: 0.000260] -> Loss: 2.8146 | Train: 27.93% | ★Test: 15.99%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 25.00% (3/12)
+Epoch 021 [LR: 0.000256] -> Loss: 2.7732 | Train: 29.50% | ★Test: 16.36%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 16.67% (2/12)
+Epoch 022 [LR: 0.000252] -> Loss: 2.7809 | Train: 30.41% | ★Test: 15.26%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 25.00% (3/12)
+Epoch 023 [LR: 0.000247] -> Loss: 2.7222 | Train: 30.46% | ★Test: 13.97%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 16.67% (2/12)
+      Class 36: 25.00% (3/12)
+Epoch 024 [LR: 0.000243] -> Loss: 2.6531 | Train: 33.50% | ★Test: 15.62%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 41.67% (5/12)
+      Class 36: 0.00% (0/12)
+Epoch 025 [LR: 0.000238] -> Loss: 2.6353 | Train: 34.46% | ★Test: 18.01%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 41.67% (5/12)
+      Class 36: 25.00% (3/12)
+Epoch 026 [LR: 0.000233] -> Loss: 2.6023 | Train: 35.75% | ★Test: 18.01%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 33.33% (4/12)
+Epoch 027 [LR: 0.000228] -> Loss: 2.5398 | Train: 37.56% | ★Test: 13.97%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 0.00% (0/12)
+Epoch 028 [LR: 0.000223] -> Loss: 2.5154 | Train: 37.84% | ★Test: 15.07%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 33.33% (4/12)
+Epoch 029 [LR: 0.000218] -> Loss: 2.4736 | Train: 39.70% | ★Test: 15.99%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 8.33% (1/12)
+Epoch 030 [LR: 0.000213] -> Loss: 2.4146 | Train: 40.20% | ★Test: 15.44%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 25.00% (3/12)
+Epoch 031 [LR: 0.000207] -> Loss: 2.3665 | Train: 44.65% | ★Test: 16.73%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 33.33% (4/12)
+Epoch 032 [LR: 0.000202] -> Loss: 2.3465 | Train: 43.52% | ★Test: 17.65%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 25.00% (3/12)
+Epoch 033 [LR: 0.000196] -> Loss: 2.2710 | Train: 48.25% | ★Test: 18.38%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 25.00% (3/12)
+Epoch 034 [LR: 0.000191] -> Loss: 2.2540 | Train: 50.11% | ★Test: 16.54%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 50.00% (6/12)
+      Class 36: 25.00% (3/12)
+Epoch 035 [LR: 0.000185] -> Loss: 2.1883 | Train: 51.01% | ★Test: 19.49%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 41.67% (5/12)
+      Class 36: 41.67% (5/12)
+Epoch 036 [LR: 0.000179] -> Loss: 2.1724 | Train: 51.75% | ★Test: 17.10%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 33.33% (4/12)
+      Class 36: 0.00% (0/12)
+Epoch 037 [LR: 0.000173] -> Loss: 2.1565 | Train: 53.38% | ★Test: 16.54%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 58.33% (7/12)
+      Class 36: 33.33% (4/12)
+Epoch 038 [LR: 0.000168] -> Loss: 2.0943 | Train: 55.69% | ★Test: 16.91%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 41.67% (5/12)
+      Class 36: 25.00% (3/12)
+Epoch 039 [LR: 0.000162] -> Loss: 2.0366 | Train: 58.56% | ★Test: 18.93%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 25.00% (3/12)
+      Class 36: 33.33% (4/12)
+Epoch 040 [LR: 0.000156] -> Loss: 2.0565 | Train: 56.19% | ★Test: 16.54%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 16.67% (2/12)
+      Class 36: 8.33% (1/12)
+Epoch 041 [LR: 0.000150] -> Loss: 1.9891 | Train: 61.15% | ★Test: 15.62%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 16.67% (2/12)
+      Class 36: 25.00% (3/12)
+Epoch 042 [LR: 0.000144] -> Loss: 1.9564 | Train: 61.43% | ★Test: 17.46%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 33.33% (4/12)
+      Class 36: 25.00% (3/12)
+Epoch 043 [LR: 0.000138] -> Loss: 1.9570 | Train: 63.23% | ★Test: 18.01%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 25.00% (3/12)
+      Class 36: 41.67% (5/12)
+Epoch 044 [LR: 0.000132] -> Loss: 1.9475 | Train: 63.46% | ★Test: 16.18%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 25.00% (3/12)
+Epoch 045 [LR: 0.000127] -> Loss: 1.9142 | Train: 65.37% | ★Test: 17.65%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 16.67% (2/12)
+Epoch 046 [LR: 0.000121] -> Loss: 1.8994 | Train: 66.84% | ★Test: 18.57%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 16.67% (2/12)
+      Class 36: 41.67% (5/12)
+Epoch 047 [LR: 0.000115] -> Loss: 1.8302 | Train: 67.62% | ★Test: 20.77%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 33.33% (4/12)
+Epoch 048 [LR: 0.000109] -> Loss: 1.8259 | Train: 68.52% | ★Test: 18.57%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 16.67% (2/12)
+      Class 36: 33.33% (4/12)
+Epoch 049 [LR: 0.000104] -> Loss: 1.7779 | Train: 72.69% | ★Test: 20.40%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 33.33% (4/12)
+Epoch 050 [LR: 0.000098] -> Loss: 1.7474 | Train: 73.82% | ★Test: 19.49%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 33.33% (4/12)
+Epoch 051 [LR: 0.000093] -> Loss: 1.7757 | Train: 74.21% | ★Test: 15.81%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 25.00% (3/12)
+      Class 36: 33.33% (4/12)
+Epoch 052 [LR: 0.000087] -> Loss: 1.7357 | Train: 73.87% | ★Test: 19.49%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 58.33% (7/12)
+Epoch 053 [LR: 0.000082] -> Loss: 1.7476 | Train: 73.82% | ★Test: 18.20%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 41.67% (5/12)
+Epoch 054 [LR: 0.000077] -> Loss: 1.6768 | Train: 77.08% | ★Test: 19.12%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 33.33% (4/12)
+Epoch 055 [LR: 0.000072] -> Loss: 1.6625 | Train: 77.25% | ★Test: 18.20%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 50.00% (6/12)
+Epoch 056 [LR: 0.000067] -> Loss: 1.6685 | Train: 77.42% | ★Test: 18.38%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 33.33% (4/12)
+Epoch 057 [LR: 0.000062] -> Loss: 1.6549 | Train: 77.53% | ★Test: 18.01%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 16.67% (2/12)
+Epoch 058 [LR: 0.000057] -> Loss: 1.6282 | Train: 79.95% | ★Test: 18.01%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 059 [LR: 0.000053] -> Loss: 1.5972 | Train: 81.19% | ★Test: 17.28%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 060 [LR: 0.000048] -> Loss: 1.5907 | Train: 80.35% | ★Test: 18.93%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 061 [LR: 0.000044] -> Loss: 1.6199 | Train: 79.17% | ★Test: 19.49%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 50.00% (6/12)
+Epoch 062 [LR: 0.000040] -> Loss: 1.5899 | Train: 81.70% | ★Test: 18.75%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 33.33% (4/12)
+Epoch 063 [LR: 0.000036] -> Loss: 1.5591 | Train: 82.71% | ★Test: 18.93%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 064 [LR: 0.000032] -> Loss: 1.5568 | Train: 82.77% | ★Test: 19.49%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 065 [LR: 0.000029] -> Loss: 1.5716 | Train: 81.76% | ★Test: 20.04%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 33.33% (4/12)
+Epoch 066 [LR: 0.000025] -> Loss: 1.5344 | Train: 83.45% | ★Test: 19.49%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 067 [LR: 0.000022] -> Loss: 1.5505 | Train: 82.38% | ★Test: 21.14%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 068 [LR: 0.000019] -> Loss: 1.5571 | Train: 82.60% | ★Test: 20.04%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 069 [LR: 0.000016] -> Loss: 1.5521 | Train: 82.94% | ★Test: 19.12%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 070 [LR: 0.000014] -> Loss: 1.5303 | Train: 84.46% | ★Test: 20.40%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 50.00% (6/12)
+Epoch 071 [LR: 0.000011] -> Loss: 1.5338 | Train: 83.33% | ★Test: 20.22%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 072 [LR: 0.000009] -> Loss: 1.5439 | Train: 83.90% | ★Test: 19.67%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 33.33% (4/12)
+Epoch 073 [LR: 0.000007] -> Loss: 1.4925 | Train: 85.75% | ★Test: 20.04%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 074 [LR: 0.000006] -> Loss: 1.5310 | Train: 84.52% | ★Test: 20.22%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 075 [LR: 0.000004] -> Loss: 1.5355 | Train: 82.83% | ★Test: 20.59%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 33.33% (4/12)
+Epoch 076 [LR: 0.000003] -> Loss: 1.5049 | Train: 84.40% | ★Test: 19.49%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 33.33% (4/12)
+Epoch 077 [LR: 0.000002] -> Loss: 1.4999 | Train: 84.40% | ★Test: 19.85%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 8.33% (1/12)
+      Class 36: 41.67% (5/12)
+Epoch 078 [LR: 0.000001] -> Loss: 1.5070 | Train: 84.01% | ★Test: 19.12%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 33.33% (4/12)
+Epoch 079 [LR: 0.000000] -> Loss: 1.5029 | Train: 85.87% | ★Test: 20.04%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 41.67% (5/12)
+Epoch 080 [LR: 0.000000] -> Loss: 1.5430 | Train: 83.11% | ★Test: 20.40%
+   🔍 [Target Class Accuracy Monitoring]
+      Class 14: 0.00% (0/12)
+      Class 36: 33.33% (4/12)

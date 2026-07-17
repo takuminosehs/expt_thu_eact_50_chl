@@ -1,0 +1,19 @@
+=== Local-Only Sub-Specialist Gated ResNet18 Training Log ===
+Target Classes (31 ch): [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19, 21, 22, 27, 29, 30, 34, 35, 36, 37, 39, 40, 41, 42, 46]
+
+Epoch 001 [LR: 0.000300] -> Loss: 3.3807 | Train: 5.54% | ★Test: 8.31%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 002 [LR: 0.000300] -> Loss: 3.2989 | Train: 7.38% | ★Test: 12.06%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 50.00% (6/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 003 [LR: 0.000300] -> Loss: 3.2345 | Train: 9.14% | ★Test: 11.80%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 75.00% (9/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 004 [LR: 0.000299] -> Loss: 3.1785 | Train: 9.90% | ★Test: 14.21%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
