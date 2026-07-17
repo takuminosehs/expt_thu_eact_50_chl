@@ -37,7 +37,7 @@ def seed_worker(worker_id):
 # ─── 📂 パス・ディレクトリ設定 (config.py準拠) ───
 # ====================================================
 PROJECT_ROOT = config.PROJECT_ROOT
-# ユーザー指定に基づき、260713_7 の加工データディレクトリを使用
+# 260713_7 の加工データディレクトリを使用
 PROCESSED_DIR = PROJECT_ROOT / "experiments" / "260713_7" / "processed_data"
 CURRENT_DIR = Path(__file__).parent.resolve()
 
@@ -59,6 +59,10 @@ STAGE3_EPOCHS = 50
 STAGE3_LR_GATING = 0.001 
 
 NUM_EPOCHS = STAGE1_EPOCHS + STAGE2_EPOCHS + STAGE3_EPOCHS
+
+# 🔍 直前の議論に基づくアテンション制御用ハイパーパラメータ
+TEMPERATURE = 0.3         # アテンションを特定の少数クラス（混同ペア）に尖らせる温度
+ATTN_DROPOUT = 0.3        # 無関係なクラスへのアテンション（ノイズ）を遮断するドロップアウト
 
 MODEL_SAVE_PATH = CURRENT_DIR / "best_model_augmented.pth"
 LOG_FILENAME = CURRENT_DIR / "result_augmented.txt"
@@ -165,40 +169,54 @@ class HoloEvTwinFolderDataset(Dataset):
 
 
 # ----------------------------------------------------
-# ─── 🧠 トランスフォーマー・ゲート定義 (方針1-C候補①) ───
+# ─── 🧠 検証可能トランスフォーマー・ゲート定義 ───
 # ----------------------------------------------------
-class TransformerGating(nn.Module):
+class VerifiableTransformerGating(nn.Module):
     """
-    [B, 50, 2] の構造情報を保ちつつ、Self-Attentionで全クラス間の確信度相関を学習するゲート
+    [B, 50, 2] の構造を維持し、温度制御付きアテンションマップを外部に返却可能なゲート層
     """
-    def __init__(self, num_classes=50, d_model=16, nhead=2, num_layers=1, dropout=0.3):
+    def __init__(self, num_classes=50, d_model=16, nhead=2, dropout=0.3):
         super().__init__()
-        # 2次元（Global, Localロジット）を d_model 次元の特徴量トークンに射影
+        # [B, 50, 2] -> [B, 50, d_model]
         self.input_proj = nn.Linear(2, d_model)
         
-        # クラス間 (トークン間) の相互アテンションを司るTransformer Encoder
-        encoder_layer = nn.TransformerEncoderLayer(
-            d_model=d_model,
-            nhead=nhead,
-            dim_feedforward=d_model * 2,
-            dropout=dropout,
-            activation='gelu',
+        # クラス間（トークン間）の相互関係を抽出するマルチヘッドセルフアテンション
+        self.mha = nn.MultiheadAttention(
+            embed_dim=d_model, 
+            num_heads=nhead, 
+            dropout=dropout, 
             batch_first=True
         )
-        self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=num_layers)
+        self.norm1 = nn.LayerNorm(d_model)
         
-        # 特徴量を再び [Global比率用の値, Local比率用の値] の2次元にマップ
+        self.ffn = nn.Sequential(
+            nn.Linear(d_model, d_model * 2),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(d_model * 2, d_model)
+        )
+        self.norm2 = nn.LayerNorm(d_model)
+        
         self.output_proj = nn.Linear(d_model, 2)
 
-    def forward(self, y_global, y_local):
-        # y_global: [B, 50], y_local: [B, 50]
-        # ─── 🛠️ 構造化テンソル [B, 50, 2] の構築 ───
-        x = torch.stack([y_global, y_local], dim=2)  # [B, 50, 2]
+    def forward(self, y_global, y_local, temperature=0.3):
+        # 幾何学的構造の維持 [B, 50, 2]
+        x = torch.stack([y_global, y_local], dim=2)
+        x = self.input_proj(x)  # [B, 50, d_model]
         
-        x = self.input_proj(x)       # [B, 50, d_model]
-        x = self.transformer(x)      # [B, 50, d_model]
-        logits = self.output_proj(x) # [B, 50, 2]
-        return logits
+        # 温度パラメータを用いたスケーリング（Softmax前の方程式のシャープ化と同値）
+        q = x / (temperature ** 0.5)
+        k = x / (temperature ** 0.5)
+        
+        # need_weights=True によりアテンションウェイト [B, 50, 50] を抽出
+        attn_output, attn_weights = self.mha(q, k, value=x, need_weights=True)
+        x = self.norm1(x + attn_output)
+        
+        ffn_output = self.ffn(x)
+        x = self.norm2(x + ffn_output)
+        
+        logits = self.output_proj(x)  # [B, 50, 2]
+        return logits, attn_weights
 
 
 # ----------------------------------------------------
@@ -240,7 +258,7 @@ class HoloEvNetClassWiseGated(nn.Module):
         super().__init__()
         self.num_classes = num_classes
         
-        # Global ストリーム: 入力形状 (B, 4, 224, 260)
+        # Global ストリーム
         resnet_g = models.resnet18(weights=None)
         self.g_conv1 = nn.Conv2d(4, 64, kernel_size=7, stride=2, padding=3, bias=False)
         self.g_bn1 = resnet_g.bn1
@@ -255,7 +273,7 @@ class HoloEvNetClassWiseGated(nn.Module):
         self.g_avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.g_classifier = nn.Linear(512, num_classes)
 
-        # Local ストリーム: 入力形状 (B, 4, 260, 346)
+        # Local ストリーム
         resnet_l = models.resnet18(weights=None)
         self.l_conv1 = nn.Conv2d(4, 64, kernel_size=7, stride=2, padding=3, bias=False)
         self.l_bn1 = resnet_l.bn1
@@ -268,13 +286,12 @@ class HoloEvNetClassWiseGated(nn.Module):
         self.l_avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.l_classifier = nn.Linear(512, num_classes)
 
-        # ─── 🛠️ Self-Attention ゲートの組み込み (過学習抑制と混同解決の両立) ───
-        self.gating_layer = TransformerGating(
+        # 🔍 可視化・検証対応型トランスフォーマー・ゲート
+        self.gating_layer = VerifiableTransformerGating(
             num_classes=num_classes,
             d_model=16,
             nhead=2,
-            num_layers=1,
-            dropout=0.3
+            dropout=ATTN_DROPOUT
         )
         
         self._init_custom_weights()
@@ -287,14 +304,12 @@ class HoloEvNetClassWiseGated(nn.Module):
         nn.init.normal_(self.l_classifier.weight, mean=0.0, std=0.01)
         nn.init.constant_(self.l_classifier.bias, 0.0)
         
-        # ゲート内部の線形層の初期化
         for m in self.gating_layer.modules():
             if isinstance(m, nn.Linear):
                 nn.init.normal_(m.weight, mean=0.0, std=0.01)
                 nn.init.constant_(m.bias, 0.0)
 
-    def forward(self, x_global, x_local, mode='both'):
-        # Globalストリームの前方伝播
+    def forward(self, x_global, x_local, mode='both', temp=0.3):
         g = self.g_conv1(x_global)
         g = self.g_bn1(g)
         g = self.g_relu(g)
@@ -311,9 +326,8 @@ class HoloEvNetClassWiseGated(nn.Module):
         if mode == 'global_only':
             alpha_g = torch.ones((x_global.size(0), self.num_classes), device=x_global.device)
             alpha_l = torch.zeros((x_global.size(0), self.num_classes), device=x_global.device)
-            return y_global, alpha_g, alpha_l
+            return y_global, alpha_g, alpha_l, None
 
-        # Localストリームの前方伝播
         l = self.l_conv1(x_local)
         l = self.l_bn1(l)
         l = self.l_relu(l)
@@ -328,24 +342,22 @@ class HoloEvNetClassWiseGated(nn.Module):
         if mode == 'local_only':
             alpha_g = torch.zeros((x_global.size(0), self.num_classes), device=x_global.device)
             alpha_l = torch.ones((x_global.size(0), self.num_classes), device=x_global.device)
-            return y_local, alpha_g, alpha_l
+            return y_local, alpha_g, alpha_l, None
 
-        # ─── 🛠️ トランスフォーマー・ゲートによるクラス間Attention融合 ───
-        gate_logits = self.gating_layer(y_global, y_local)  # 出力形状: [B, 50, 2]
+        # 構造化された確信度から相互アテンションを動的計算
+        gate_logits, attn_weights = self.gating_layer(y_global, y_local, temperature=temp)
         gate_weights = F.softmax(gate_logits, dim=2)
         
         alpha_g, alpha_l = gate_weights[:, :, 0], gate_weights[:, :, 1]
         y_final = alpha_g * y_global + alpha_l * y_local
-        return y_final, alpha_g, alpha_l
+        return y_final, alpha_g, alpha_l, attn_weights
 
 
 # ----------------------------------------------------
 # ─── 🔍 動的サンプラーおよびエラー率計算ヘルパー ───
 # ----------------------------------------------------
 def compute_class_error_rates(model, loader, device, num_classes=50):
-    """
-    テストデータに対するクラス（ラベル）ごとの誤答率を算出する関数
-    """
+    """テストデータに対するクラス（ラベル）ごとの誤答率を算出する関数"""
     model.eval()
     class_correct = torch.zeros(num_classes, device=device)
     class_total = torch.zeros(num_classes, device=device)
@@ -353,7 +365,7 @@ def compute_class_error_rates(model, loader, device, num_classes=50):
     with torch.no_grad():
         for x_g, x_l, labels in loader:
             x_g, x_l, labels = x_g.to(device), x_l.to(device), labels.to(device)
-            outputs, _, _ = model(x_g, x_l, mode="global_only")
+            outputs, _, _, _ = model(x_g, x_l, mode="global_only")
             preds = torch.argmax(outputs, dim=1)
             for p, l in zip(preds, labels):
                 class_total[l] += 1
@@ -371,9 +383,7 @@ def compute_class_error_rates(model, loader, device, num_classes=50):
 
 
 def create_error_aware_sampler(dataset, error_rates, multiplier=5.0, seed=42):
-    """
-    誤答率の高いラベルを持つサンプルの抽出確率を引き上げる WeightedRandomSampler を作成する
-    """
+    """誤答率の高いラベルを持つサンプルの抽出確率を引き上げるサンプラー"""
     weights = []
     for idx in range(len(dataset)):
         f_name = dataset.file_names[idx]
@@ -458,7 +468,7 @@ if __name__ == "__main__":
     stage_best_weights = None
 
     with LOG_FILENAME.open("w", encoding="utf-8") as f:
-        f.write("=== Class-Wise Adaptive Fusion Training Log (3-Stage with ASAM) ===\n")
+        f.write("=== Class-Wise Adaptive Fusion Training Log (Transformer Gate with ASAM) ===\n")
 
         for epoch in range(NUM_EPOCHS):
             # --- ステージごとのフェーズ & 学習率制御 ---
@@ -502,13 +512,13 @@ if __name__ == "__main__":
                 
                 # ─── 1st Step ───
                 optimizer.zero_grad()
-                outputs, _, _ = model(x_g, x_l, mode=mode)
+                outputs, _, _, _ = model(x_g, x_l, mode=mode, temp=TEMPERATURE)
                 loss = criterion(outputs, labels)
                 loss.backward()
                 optimizer.first_step(zero_grad=True)
 
                 # ─── 2nd Step ───
-                outputs_adv, _, _ = model(x_g, x_l, mode=mode)
+                outputs_adv, _, _, _ = model(x_g, x_l, mode=mode, temp=TEMPERATURE)
                 loss_adv = criterion(outputs_adv, labels)
                 loss_adv.backward()
                 optimizer.second_step(zero_grad=True)
@@ -522,17 +532,21 @@ if __name__ == "__main__":
             model.eval()
             test_total, test_top1 = 0, 0.0
             epoch_alpha_g, epoch_alpha_l = [], []
+            epoch_attn_maps = []
 
             with torch.no_grad():
                 for x_g, x_l, labels in test_loader:
                     x_g, x_l, labels = x_g.to(device), x_l.to(device), labels.to(device)
-                    outputs, a_g, a_l = model(x_g, x_l, mode=mode)
+                    outputs, a_g, a_l, attn_map = model(x_g, x_l, mode=mode, temp=TEMPERATURE)
                     test_total += labels.size(0)
                     acc1, _ = calculate_topk_accuracy(outputs, labels, topk=(1, 5))
                     test_top1 += acc1
                     
                     epoch_alpha_g.append(a_g.cpu().numpy().mean())
                     epoch_alpha_l.append(a_l.cpu().numpy().mean())
+                    
+                    if attn_map is not None:
+                        epoch_attn_maps.append(attn_map.cpu().numpy())
 
             tr_acc = (train_top1 / train_total) * 100
             te_acc = (test_top1 / test_total) * 100
@@ -544,6 +558,20 @@ if __name__ == "__main__":
             )
             print(status)
             f.write(status + "\n")
+
+            # 🔍 アテンション集中度の動的モニタリング (Stage-3のみ有効)
+            if epoch_attn_maps:
+                all_attn = np.concatenate(epoch_attn_maps, axis=0)  # [Total_Test, 50, 50]
+                avg_attn = np.mean(all_attn, axis=0)  # [50, 50]
+                
+                attn_log = "   🔍 [Attention Focus Analysis]\n"
+                for target_cls in [14, 36]:  # ユーザー指定の混同しやすい要注意クラス
+                    cls_attn = avg_attn[target_cls]
+                    top3_idx = cls_attn.argsort()[::-1][:3]
+                    attn_log += f"      Class {target_cls:02d} (携帯/敬礼) -> "
+                    attn_log += ", ".join([f"Class {idx:02d}: {cls_attn[idx]*100:.1f}%" for idx in top3_idx]) + "\n"
+                print(attn_log, end="")
+                f.write(attn_log)
 
             if te_acc > stage_best_acc:
                 stage_best_acc = te_acc
