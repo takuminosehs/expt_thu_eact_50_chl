@@ -1,0 +1,201 @@
+=== Class-Wise Adaptive Fusion Training Log (3-Stage with ASAM) ===
+Epoch 001 [STAGE-1 (Global-Train) | G-LR: 0.000300 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 3.6634 | Train: 6.02% | ★Test: 9.01% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 002 [STAGE-1 (Global-Train) | G-LR: 0.000300 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 3.1477 | Train: 17.23% | ★Test: 24.45% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 003 [STAGE-1 (Global-Train) | G-LR: 0.000299 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 2.5461 | Train: 39.02% | ★Test: 44.30% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 004 [STAGE-1 (Global-Train) | G-LR: 0.000297 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 2.1560 | Train: 48.87% | ★Test: 50.00% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 005 [STAGE-1 (Global-Train) | G-LR: 0.000295 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 1.8954 | Train: 60.81% | ★Test: 51.65% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 006 [STAGE-1 (Global-Train) | G-LR: 0.000293 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 1.7129 | Train: 66.50% | ★Test: 58.46% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 007 [STAGE-1 (Global-Train) | G-LR: 0.000289 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 1.5426 | Train: 73.65% | ★Test: 55.51% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 008 [STAGE-1 (Global-Train) | G-LR: 0.000286 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 1.3846 | Train: 79.50% | ★Test: 65.26% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 009 [STAGE-1 (Global-Train) | G-LR: 0.000281 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 1.2343 | Train: 85.64% | ★Test: 66.18% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 010 [STAGE-1 (Global-Train) | G-LR: 0.000277 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 1.1165 | Train: 90.60% | ★Test: 61.58% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 011 [STAGE-1 (Global-Train) | G-LR: 0.000271 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 1.0297 | Train: 94.31% | ★Test: 64.89% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 012 [STAGE-1 (Global-Train) | G-LR: 0.000266 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.9313 | Train: 98.14% | ★Test: 67.83% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 013 [STAGE-1 (Global-Train) | G-LR: 0.000259 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.8884 | Train: 98.65% | ★Test: 70.04% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 014 [STAGE-1 (Global-Train) | G-LR: 0.000253 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.8638 | Train: 99.21% | ★Test: 70.59% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 015 [STAGE-1 (Global-Train) | G-LR: 0.000246 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.8334 | Train: 99.27% | ★Test: 68.01% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 016 [STAGE-1 (Global-Train) | G-LR: 0.000238 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.8144 | Train: 99.44% | ★Test: 72.24% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 017 [STAGE-1 (Global-Train) | G-LR: 0.000230 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7762 | Train: 100.00% | ★Test: 72.98% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 018 [STAGE-1 (Global-Train) | G-LR: 0.000222 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7629 | Train: 99.94% | ★Test: 74.45% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 019 [STAGE-1 (Global-Train) | G-LR: 0.000214 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7571 | Train: 100.00% | ★Test: 75.00% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 020 [STAGE-1 (Global-Train) | G-LR: 0.000205 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7457 | Train: 100.00% | ★Test: 75.18% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 021 [STAGE-1 (Global-Train) | G-LR: 0.000196 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7402 | Train: 100.00% | ★Test: 74.82% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 022 [STAGE-1 (Global-Train) | G-LR: 0.000187 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7354 | Train: 100.00% | ★Test: 73.53% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 023 [STAGE-1 (Global-Train) | G-LR: 0.000178 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7318 | Train: 100.00% | ★Test: 72.43% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 024 [STAGE-1 (Global-Train) | G-LR: 0.000169 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7304 | Train: 100.00% | ★Test: 75.92% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 025 [STAGE-1 (Global-Train) | G-LR: 0.000159 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7280 | Train: 100.00% | ★Test: 74.82% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 026 [STAGE-1 (Global-Train) | G-LR: 0.000150 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7248 | Train: 100.00% | ★Test: 74.82% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 027 [STAGE-1 (Global-Train) | G-LR: 0.000141 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7269 | Train: 99.94% | ★Test: 74.63% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 028 [STAGE-1 (Global-Train) | G-LR: 0.000131 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7223 | Train: 100.00% | ★Test: 74.26% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 029 [STAGE-1 (Global-Train) | G-LR: 0.000122 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7222 | Train: 100.00% | ★Test: 74.82% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 030 [STAGE-1 (Global-Train) | G-LR: 0.000113 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7197 | Train: 100.00% | ★Test: 74.08% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 031 [STAGE-1 (Global-Train) | G-LR: 0.000104 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7174 | Train: 100.00% | ★Test: 75.00% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 032 [STAGE-1 (Global-Train) | G-LR: 0.000095 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7159 | Train: 100.00% | ★Test: 75.18% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 033 [STAGE-1 (Global-Train) | G-LR: 0.000086 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7155 | Train: 100.00% | ★Test: 74.63% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 034 [STAGE-1 (Global-Train) | G-LR: 0.000078 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7140 | Train: 100.00% | ★Test: 74.26% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 035 [STAGE-1 (Global-Train) | G-LR: 0.000070 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7135 | Train: 100.00% | ★Test: 73.90% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 036 [STAGE-1 (Global-Train) | G-LR: 0.000062 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7124 | Train: 100.00% | ★Test: 74.08% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 037 [STAGE-1 (Global-Train) | G-LR: 0.000054 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7120 | Train: 100.00% | ★Test: 75.37% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 038 [STAGE-1 (Global-Train) | G-LR: 0.000047 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7120 | Train: 100.00% | ★Test: 74.45% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 039 [STAGE-1 (Global-Train) | G-LR: 0.000041 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7115 | Train: 100.00% | ★Test: 75.55% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 040 [STAGE-1 (Global-Train) | G-LR: 0.000034 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7107 | Train: 100.00% | ★Test: 74.45% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 041 [STAGE-1 (Global-Train) | G-LR: 0.000029 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7105 | Train: 100.00% | ★Test: 74.63% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 042 [STAGE-1 (Global-Train) | G-LR: 0.000023 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7105 | Train: 100.00% | ★Test: 73.53% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 043 [STAGE-1 (Global-Train) | G-LR: 0.000019 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7100 | Train: 100.00% | ★Test: 74.45% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 044 [STAGE-1 (Global-Train) | G-LR: 0.000014 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7099 | Train: 100.00% | ★Test: 74.08% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 045 [STAGE-1 (Global-Train) | G-LR: 0.000011 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7097 | Train: 100.00% | ★Test: 75.00% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 046 [STAGE-1 (Global-Train) | G-LR: 0.000007 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7094 | Train: 100.00% | ★Test: 75.00% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 047 [STAGE-1 (Global-Train) | G-LR: 0.000005 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7091 | Train: 100.00% | ★Test: 74.26% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 048 [STAGE-1 (Global-Train) | G-LR: 0.000003 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7094 | Train: 100.00% | ★Test: 75.00% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 049 [STAGE-1 (Global-Train) | G-LR: 0.000001 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7092 | Train: 100.00% | ★Test: 74.45% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+Epoch 050 [STAGE-1 (Global-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7094 | Train: 100.00% | ★Test: 74.63% | [G-Gate_Avg: 1.000 / L-Gate_Avg: 0.000]
+
+🔄 [Stage-1 Transition] Stage-1の最高精度重み (75.92%) をロードしました。
+
+💡 [計算完了] クラス別テスト誤答率:
+  Class 00: 25.0%
+  Class 01: 16.7%
+  Class 02: 16.7%
+  Class 03: 25.0%
+  Class 05: 12.5%
+  Class 06: 25.0%
+  Class 08: 58.3%
+  Class 09: 66.7%
+  Class 10: 33.3%
+  Class 11: 25.0%
+  Class 14: 75.0%
+  Class 15: 83.3%
+  Class 16: 38.5%
+  Class 17: 33.3%
+  Class 18: 8.3%
+  Class 19: 33.3%
+  Class 20: 8.3%
+  Class 21: 41.7%
+  Class 22: 8.3%
+  Class 26: 33.3%
+  Class 27: 41.7%
+  Class 29: 16.7%
+  Class 30: 66.7%
+  Class 31: 16.7%
+  Class 32: 8.3%
+  Class 34: 50.0%
+  Class 35: 33.3%
+  Class 36: 8.3%
+  Class 37: 58.3%
+  Class 39: 16.7%
+  Class 40: 16.7%
+  Class 41: 25.0%
+  Class 42: 50.0%
+  Class 43: 8.3%
+  Class 46: 8.3%
+
+🚀 [Stage-2 Start] エラー指向の加重サンプラーを適用してStage-2を開始します。
+
+Epoch 051 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000300 | Gt-LR: 0.000000] -> Loss: 3.6422 | Train: 7.94% | ★Test: 4.96% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 052 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000300 | Gt-LR: 0.000000] -> Loss: 3.3129 | Train: 12.73% | ★Test: 6.99% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 053 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000299 | Gt-LR: 0.000000] -> Loss: 3.0330 | Train: 20.21% | ★Test: 11.95% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 054 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000297 | Gt-LR: 0.000000] -> Loss: 2.7850 | Train: 28.94% | ★Test: 15.81% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 055 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000295 | Gt-LR: 0.000000] -> Loss: 2.5309 | Train: 36.54% | ★Test: 14.34% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 056 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000293 | Gt-LR: 0.000000] -> Loss: 2.2622 | Train: 46.57% | ★Test: 18.93% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 057 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000289 | Gt-LR: 0.000000] -> Loss: 2.0902 | Train: 53.72% | ★Test: 26.84% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 058 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000286 | Gt-LR: 0.000000] -> Loss: 1.8079 | Train: 67.79% | ★Test: 21.88% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 059 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000281 | Gt-LR: 0.000000] -> Loss: 1.6456 | Train: 73.76% | ★Test: 25.18% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 060 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000277 | Gt-LR: 0.000000] -> Loss: 1.4369 | Train: 82.71% | ★Test: 32.35% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 061 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000271 | Gt-LR: 0.000000] -> Loss: 1.2881 | Train: 88.51% | ★Test: 29.04% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 062 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000266 | Gt-LR: 0.000000] -> Loss: 1.1979 | Train: 89.86% | ★Test: 32.90% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 063 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000259 | Gt-LR: 0.000000] -> Loss: 1.1174 | Train: 93.64% | ★Test: 28.68% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 064 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000253 | Gt-LR: 0.000000] -> Loss: 1.0755 | Train: 94.88% | ★Test: 29.41% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 065 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000246 | Gt-LR: 0.000000] -> Loss: 0.9914 | Train: 96.90% | ★Test: 33.64% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 066 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000238 | Gt-LR: 0.000000] -> Loss: 0.9535 | Train: 97.52% | ★Test: 35.48% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 067 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000230 | Gt-LR: 0.000000] -> Loss: 0.9296 | Train: 97.92% | ★Test: 38.24% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 068 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000222 | Gt-LR: 0.000000] -> Loss: 0.8961 | Train: 98.65% | ★Test: 35.85% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 069 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000214 | Gt-LR: 0.000000] -> Loss: 0.8611 | Train: 99.32% | ★Test: 38.60% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 070 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000205 | Gt-LR: 0.000000] -> Loss: 0.8404 | Train: 99.32% | ★Test: 36.58% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 071 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000196 | Gt-LR: 0.000000] -> Loss: 0.8457 | Train: 99.16% | ★Test: 37.32% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 072 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000187 | Gt-LR: 0.000000] -> Loss: 0.8200 | Train: 99.55% | ★Test: 36.76% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 073 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000178 | Gt-LR: 0.000000] -> Loss: 0.8060 | Train: 99.89% | ★Test: 39.52% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 074 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000169 | Gt-LR: 0.000000] -> Loss: 0.7960 | Train: 99.83% | ★Test: 40.62% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 075 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000159 | Gt-LR: 0.000000] -> Loss: 0.7866 | Train: 99.83% | ★Test: 37.13% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 076 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000150 | Gt-LR: 0.000000] -> Loss: 0.7724 | Train: 99.94% | ★Test: 37.50% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 077 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000141 | Gt-LR: 0.000000] -> Loss: 0.7697 | Train: 100.00% | ★Test: 38.79% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 078 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000131 | Gt-LR: 0.000000] -> Loss: 0.7625 | Train: 100.00% | ★Test: 38.05% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 079 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000122 | Gt-LR: 0.000000] -> Loss: 0.7612 | Train: 99.94% | ★Test: 39.71% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 080 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000113 | Gt-LR: 0.000000] -> Loss: 0.7542 | Train: 100.00% | ★Test: 39.52% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 081 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000104 | Gt-LR: 0.000000] -> Loss: 0.7488 | Train: 99.94% | ★Test: 40.44% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 082 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000095 | Gt-LR: 0.000000] -> Loss: 0.7485 | Train: 100.00% | ★Test: 40.62% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 083 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000086 | Gt-LR: 0.000000] -> Loss: 0.7439 | Train: 100.00% | ★Test: 38.60% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 084 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000078 | Gt-LR: 0.000000] -> Loss: 0.7442 | Train: 100.00% | ★Test: 40.26% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 085 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000070 | Gt-LR: 0.000000] -> Loss: 0.7396 | Train: 100.00% | ★Test: 39.71% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 086 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000062 | Gt-LR: 0.000000] -> Loss: 0.7383 | Train: 100.00% | ★Test: 38.97% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 087 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000054 | Gt-LR: 0.000000] -> Loss: 0.7366 | Train: 100.00% | ★Test: 40.62% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 088 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000047 | Gt-LR: 0.000000] -> Loss: 0.7348 | Train: 100.00% | ★Test: 39.89% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 089 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000041 | Gt-LR: 0.000000] -> Loss: 0.7321 | Train: 100.00% | ★Test: 40.81% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 090 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000034 | Gt-LR: 0.000000] -> Loss: 0.7309 | Train: 100.00% | ★Test: 40.26% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 091 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000029 | Gt-LR: 0.000000] -> Loss: 0.7284 | Train: 100.00% | ★Test: 41.73% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 092 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000023 | Gt-LR: 0.000000] -> Loss: 0.7278 | Train: 100.00% | ★Test: 40.44% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 093 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000019 | Gt-LR: 0.000000] -> Loss: 0.7288 | Train: 100.00% | ★Test: 40.26% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 094 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000014 | Gt-LR: 0.000000] -> Loss: 0.7273 | Train: 100.00% | ★Test: 39.71% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 095 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000011 | Gt-LR: 0.000000] -> Loss: 0.7280 | Train: 100.00% | ★Test: 38.97% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 096 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000007 | Gt-LR: 0.000000] -> Loss: 0.7273 | Train: 100.00% | ★Test: 41.36% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 097 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000005 | Gt-LR: 0.000000] -> Loss: 0.7270 | Train: 100.00% | ★Test: 38.79% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 098 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000003 | Gt-LR: 0.000000] -> Loss: 0.7260 | Train: 100.00% | ★Test: 40.26% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 099 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000001 | Gt-LR: 0.000000] -> Loss: 0.7264 | Train: 100.00% | ★Test: 41.18% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+Epoch 100 [STAGE-2 (Local-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000000] -> Loss: 0.7268 | Train: 100.00% | ★Test: 39.34% | [G-Gate_Avg: 0.000 / L-Gate_Avg: 1.000]
+
+🔄 [Stage-2 Transition] Stage-2の最高精度重み (41.73%) をロードしました。
+
+🚀 [Stage-3 Start] サンプリング確率を均等（Shuffle）に戻してStage-3へ移行します。
+
+Epoch 101 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.001000] -> Loss: 0.7201 | Train: 100.00% | ★Test: 73.16% | [G-Gate_Avg: 0.584 / L-Gate_Avg: 0.416]
+Epoch 102 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000999] -> Loss: 0.7182 | Train: 100.00% | ★Test: 72.43% | [G-Gate_Avg: 0.572 / L-Gate_Avg: 0.428]
+Epoch 103 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000996] -> Loss: 0.7173 | Train: 100.00% | ★Test: 73.71% | [G-Gate_Avg: 0.591 / L-Gate_Avg: 0.409]
+Epoch 104 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000991] -> Loss: 0.7161 | Train: 100.00% | ★Test: 72.24% | [G-Gate_Avg: 0.556 / L-Gate_Avg: 0.444]
+Epoch 105 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000984] -> Loss: 0.7166 | Train: 100.00% | ★Test: 71.32% | [G-Gate_Avg: 0.615 / L-Gate_Avg: 0.385]
+Epoch 106 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000976] -> Loss: 0.7166 | Train: 100.00% | ★Test: 73.90% | [G-Gate_Avg: 0.591 / L-Gate_Avg: 0.409]
+Epoch 107 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000965] -> Loss: 0.7160 | Train: 100.00% | ★Test: 72.06% | [G-Gate_Avg: 0.592 / L-Gate_Avg: 0.408]
+Epoch 108 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000952] -> Loss: 0.7157 | Train: 100.00% | ★Test: 71.51% | [G-Gate_Avg: 0.541 / L-Gate_Avg: 0.459]
+Epoch 109 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000938] -> Loss: 0.7149 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.568 / L-Gate_Avg: 0.432]
+Epoch 110 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000922] -> Loss: 0.7151 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.584 / L-Gate_Avg: 0.416]
+Epoch 111 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000905] -> Loss: 0.7152 | Train: 100.00% | ★Test: 71.14% | [G-Gate_Avg: 0.566 / L-Gate_Avg: 0.434]
+Epoch 112 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000885] -> Loss: 0.7150 | Train: 100.00% | ★Test: 70.40% | [G-Gate_Avg: 0.574 / L-Gate_Avg: 0.426]
+Epoch 113 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000864] -> Loss: 0.7151 | Train: 100.00% | ★Test: 72.24% | [G-Gate_Avg: 0.591 / L-Gate_Avg: 0.409]
+Epoch 114 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000842] -> Loss: 0.7153 | Train: 100.00% | ★Test: 72.43% | [G-Gate_Avg: 0.584 / L-Gate_Avg: 0.416]
+Epoch 115 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000819] -> Loss: 0.7147 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.569 / L-Gate_Avg: 0.431]
+Epoch 116 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000794] -> Loss: 0.7156 | Train: 100.00% | ★Test: 70.77% | [G-Gate_Avg: 0.597 / L-Gate_Avg: 0.403]
+Epoch 117 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000768] -> Loss: 0.7151 | Train: 100.00% | ★Test: 72.98% | [G-Gate_Avg: 0.584 / L-Gate_Avg: 0.416]
+Epoch 118 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000741] -> Loss: 0.7148 | Train: 100.00% | ★Test: 71.51% | [G-Gate_Avg: 0.569 / L-Gate_Avg: 0.431]
+Epoch 119 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000713] -> Loss: 0.7149 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.571 / L-Gate_Avg: 0.429]
+Epoch 120 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000684] -> Loss: 0.7141 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.569 / L-Gate_Avg: 0.431]
+Epoch 121 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000655] -> Loss: 0.7143 | Train: 100.00% | ★Test: 72.06% | [G-Gate_Avg: 0.577 / L-Gate_Avg: 0.423]
+Epoch 122 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000624] -> Loss: 0.7142 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.578 / L-Gate_Avg: 0.422]
+Epoch 123 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000594] -> Loss: 0.7137 | Train: 100.00% | ★Test: 74.45% | [G-Gate_Avg: 0.573 / L-Gate_Avg: 0.427]
+Epoch 124 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000563] -> Loss: 0.7135 | Train: 100.00% | ★Test: 74.82% | [G-Gate_Avg: 0.590 / L-Gate_Avg: 0.410]
+Epoch 125 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000531] -> Loss: 0.7147 | Train: 100.00% | ★Test: 72.43% | [G-Gate_Avg: 0.577 / L-Gate_Avg: 0.423]
+Epoch 126 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000500] -> Loss: 0.7151 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.594 / L-Gate_Avg: 0.406]
+Epoch 127 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000469] -> Loss: 0.7164 | Train: 100.00% | ★Test: 71.32% | [G-Gate_Avg: 0.570 / L-Gate_Avg: 0.430]
+Epoch 128 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000437] -> Loss: 0.7145 | Train: 100.00% | ★Test: 72.24% | [G-Gate_Avg: 0.581 / L-Gate_Avg: 0.419]
+Epoch 129 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000406] -> Loss: 0.7165 | Train: 100.00% | ★Test: 72.61% | [G-Gate_Avg: 0.601 / L-Gate_Avg: 0.399]
+Epoch 130 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000376] -> Loss: 0.7150 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.572 / L-Gate_Avg: 0.428]
+Epoch 131 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000345] -> Loss: 0.7148 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.575 / L-Gate_Avg: 0.425]
+Epoch 132 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000316] -> Loss: 0.7145 | Train: 100.00% | ★Test: 70.77% | [G-Gate_Avg: 0.570 / L-Gate_Avg: 0.430]
+Epoch 133 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000287] -> Loss: 0.7152 | Train: 100.00% | ★Test: 70.40% | [G-Gate_Avg: 0.574 / L-Gate_Avg: 0.426]
+Epoch 134 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000259] -> Loss: 0.7146 | Train: 100.00% | ★Test: 72.06% | [G-Gate_Avg: 0.585 / L-Gate_Avg: 0.415]
+Epoch 135 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000232] -> Loss: 0.7147 | Train: 100.00% | ★Test: 71.32% | [G-Gate_Avg: 0.574 / L-Gate_Avg: 0.426]
+Epoch 136 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000206] -> Loss: 0.7143 | Train: 100.00% | ★Test: 70.96% | [G-Gate_Avg: 0.564 / L-Gate_Avg: 0.436]
+Epoch 137 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000181] -> Loss: 0.7147 | Train: 100.00% | ★Test: 71.14% | [G-Gate_Avg: 0.574 / L-Gate_Avg: 0.426]
+Epoch 138 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000158] -> Loss: 0.7150 | Train: 100.00% | ★Test: 72.06% | [G-Gate_Avg: 0.573 / L-Gate_Avg: 0.427]
+Epoch 139 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000136] -> Loss: 0.7150 | Train: 100.00% | ★Test: 71.14% | [G-Gate_Avg: 0.578 / L-Gate_Avg: 0.422]
+Epoch 140 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000115] -> Loss: 0.7147 | Train: 100.00% | ★Test: 71.88% | [G-Gate_Avg: 0.577 / L-Gate_Avg: 0.423]
+Epoch 141 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000095] -> Loss: 0.7146 | Train: 100.00% | ★Test: 70.96% | [G-Gate_Avg: 0.569 / L-Gate_Avg: 0.431]
+Epoch 142 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000078] -> Loss: 0.7149 | Train: 100.00% | ★Test: 70.04% | [G-Gate_Avg: 0.573 / L-Gate_Avg: 0.427]
+Epoch 143 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000062] -> Loss: 0.7146 | Train: 100.00% | ★Test: 71.32% | [G-Gate_Avg: 0.576 / L-Gate_Avg: 0.424]
+Epoch 144 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000048] -> Loss: 0.7150 | Train: 100.00% | ★Test: 71.51% | [G-Gate_Avg: 0.576 / L-Gate_Avg: 0.424]
+Epoch 145 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000035] -> Loss: 0.7149 | Train: 100.00% | ★Test: 72.61% | [G-Gate_Avg: 0.575 / L-Gate_Avg: 0.425]
+Epoch 146 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000024] -> Loss: 0.7145 | Train: 100.00% | ★Test: 71.69% | [G-Gate_Avg: 0.567 / L-Gate_Avg: 0.433]
+Epoch 147 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000016] -> Loss: 0.7142 | Train: 100.00% | ★Test: 70.96% | [G-Gate_Avg: 0.573 / L-Gate_Avg: 0.427]
+Epoch 148 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000009] -> Loss: 0.7149 | Train: 100.00% | ★Test: 72.24% | [G-Gate_Avg: 0.579 / L-Gate_Avg: 0.421]
+Epoch 149 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000004] -> Loss: 0.7146 | Train: 100.00% | ★Test: 72.24% | [G-Gate_Avg: 0.567 / L-Gate_Avg: 0.433]
+Epoch 150 [STAGE-3 (Gating-Train) | G-LR: 0.000000 | L-LR: 0.000000 | Gt-LR: 0.000001] -> Loss: 0.7149 | Train: 100.00% | ★Test: 70.22% | [G-Gate_Avg: 0.575 / L-Gate_Avg: 0.425]
+
+⏰ [完了保存] 最終150エポック（Stage-3終了時）のモデルを保存しました: model_epoch150.pth
+
