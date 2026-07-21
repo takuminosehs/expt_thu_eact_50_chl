@@ -60,8 +60,9 @@ if NUM_TARGET_CLASSES <= 1:
     exit(0)
 
 # ─── ⚙️ ハイパーパラメータ設定 ───
-NUM_EPOCHS = 80
-LR_INITIAL = 0.0003
+NUM_EPOCHS = 300
+# LR_INITIAL = 0.0003
+LR_INITIAL = 0.0005
 BATCH_SIZE = 4
 
 MODEL_SAVE_PATH = CURRENT_DIR / "best_sub_specialist_model.pth"
