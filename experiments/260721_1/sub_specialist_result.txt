@@ -1,0 +1,111 @@
+=== Local-Only Sub-Specialist Gated ResNet18 Training Log ===
+Target Classes (31 ch): [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19, 21, 22, 27, 29, 30, 34, 35, 36, 37, 39, 40, 41, 42, 46]
+
+Epoch 001 [LR: 0.000500] -> Loss: 3.3276 | Train: 5.66% | ★Test: 10.72%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 002 [LR: 0.000500] -> Loss: 3.1823 | Train: 10.47% | ★Test: 8.04%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 66.67% (8/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 003 [LR: 0.000498] -> Loss: 3.1127 | Train: 11.06% | ★Test: 11.80%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 25.00% (3/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 004 [LR: 0.000496] -> Loss: 3.0335 | Train: 15.54% | ★Test: 15.28%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 005 [LR: 0.000492] -> Loss: 2.9665 | Train: 16.55% | ★Test: 13.14%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 50.00% (6/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 006 [LR: 0.000488] -> Loss: 2.9466 | Train: 16.81% | ★Test: 16.89%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 25.00% (3/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 007 [LR: 0.000482] -> Loss: 2.9132 | Train: 17.65% | ★Test: 17.96%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 008 [LR: 0.000476] -> Loss: 2.8471 | Train: 19.17% | ★Test: 20.11%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 009 [LR: 0.000469] -> Loss: 2.8211 | Train: 21.62% | ★Test: 16.09%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 010 [LR: 0.000461] -> Loss: 2.7815 | Train: 22.30% | ★Test: 13.67%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 011 [LR: 0.000452] -> Loss: 2.7513 | Train: 23.48% | ★Test: 19.84%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 41.67% (5/12)
+Epoch 012 [LR: 0.000443] -> Loss: 2.7392 | Train: 24.07% | ★Test: 18.50%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 013 [LR: 0.000432] -> Loss: 2.7032 | Train: 25.84% | ★Test: 21.72%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 014 [LR: 0.000421] -> Loss: 2.6826 | Train: 25.51% | ★Test: 18.50%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 015 [LR: 0.000409] -> Loss: 2.6767 | Train: 26.01% | ★Test: 21.72%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 41.67% (5/12)
+Epoch 016 [LR: 0.000397] -> Loss: 2.6179 | Train: 28.72% | ★Test: 22.25%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 33.33% (4/12)
+Epoch 017 [LR: 0.000384] -> Loss: 2.5912 | Train: 29.05% | ★Test: 21.98%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 018 [LR: 0.000370] -> Loss: 2.6100 | Train: 28.89% | ★Test: 22.79%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 019 [LR: 0.000356] -> Loss: 2.5389 | Train: 32.35% | ★Test: 20.11%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 50.00% (6/12)
+Epoch 020 [LR: 0.000342] -> Loss: 2.5366 | Train: 31.42% | ★Test: 19.84%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 021 [LR: 0.000327] -> Loss: 2.5077 | Train: 31.50% | ★Test: 24.13%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 022 [LR: 0.000312] -> Loss: 2.4935 | Train: 32.69% | ★Test: 23.32%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 50.00% (6/12)
+Epoch 023 [LR: 0.000297] -> Loss: 2.4381 | Train: 34.71% | ★Test: 25.47%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 33.33% (4/12)
+Epoch 024 [LR: 0.000281] -> Loss: 2.4422 | Train: 33.53% | ★Test: 25.47%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 025 [LR: 0.000266] -> Loss: 2.4052 | Train: 35.22% | ★Test: 26.81%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 026 [LR: 0.000250] -> Loss: 2.3653 | Train: 37.50% | ★Test: 26.54%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 027 [LR: 0.000234] -> Loss: 2.3676 | Train: 36.99% | ★Test: 27.35%
+   🔍 [Target Class Accuracy Monitoring (Sub-Specialist)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 33.33% (4/12)

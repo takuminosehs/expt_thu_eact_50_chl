@@ -1,0 +1,203 @@
+=== Fast Verifier Dilated ResNet18 Training Log ===
+Target Classes (31 ch): [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19, 21, 22, 27, 29, 30, 34, 35, 36, 37, 39, 40, 41, 42, 46]
+
+Epoch 001 [LR: 0.000500] -> Loss: 3.3466 | Train: 4.56% | ★Test: 4.29%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 002 [LR: 0.000500] -> Loss: 3.1970 | Train: 9.04% | ★Test: 8.31%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 003 [LR: 0.000498] -> Loss: 3.1165 | Train: 11.06% | ★Test: 11.26%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 25.00% (3/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 004 [LR: 0.000496] -> Loss: 3.0514 | Train: 12.92% | ★Test: 14.48%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 005 [LR: 0.000492] -> Loss: 2.9878 | Train: 14.44% | ★Test: 15.28%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 66.67% (8/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 006 [LR: 0.000488] -> Loss: 2.9683 | Train: 15.54% | ★Test: 15.01%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 50.00% (6/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 007 [LR: 0.000482] -> Loss: 2.9350 | Train: 16.64% | ★Test: 16.89%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 008 [LR: 0.000476] -> Loss: 2.8840 | Train: 19.59% | ★Test: 19.30%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 58.33% (7/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 009 [LR: 0.000469] -> Loss: 2.8790 | Train: 19.93% | ★Test: 19.30%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 41.67% (5/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 010 [LR: 0.000461] -> Loss: 2.8432 | Train: 20.19% | ★Test: 17.43%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 011 [LR: 0.000452] -> Loss: 2.8254 | Train: 21.45% | ★Test: 17.69%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 012 [LR: 0.000443] -> Loss: 2.7973 | Train: 20.52% | ★Test: 19.57%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 013 [LR: 0.000432] -> Loss: 2.7852 | Train: 23.99% | ★Test: 18.50%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 014 [LR: 0.000421] -> Loss: 2.7556 | Train: 21.71% | ★Test: 17.96%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 015 [LR: 0.000409] -> Loss: 2.7379 | Train: 24.16% | ★Test: 19.84%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 016 [LR: 0.000397] -> Loss: 2.7203 | Train: 23.73% | ★Test: 19.84%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 017 [LR: 0.000384] -> Loss: 2.6974 | Train: 24.58% | ★Test: 23.06%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 018 [LR: 0.000370] -> Loss: 2.6980 | Train: 25.59% | ★Test: 24.93%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 019 [LR: 0.000356] -> Loss: 2.6424 | Train: 25.93% | ★Test: 21.98%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 020 [LR: 0.000342] -> Loss: 2.6315 | Train: 26.94% | ★Test: 24.13%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 021 [LR: 0.000327] -> Loss: 2.6067 | Train: 29.81% | ★Test: 24.40%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 022 [LR: 0.000312] -> Loss: 2.6000 | Train: 28.21% | ★Test: 22.79%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 023 [LR: 0.000297] -> Loss: 2.5596 | Train: 30.41% | ★Test: 23.59%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 024 [LR: 0.000281] -> Loss: 2.5534 | Train: 28.63% | ★Test: 23.59%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 025 [LR: 0.000266] -> Loss: 2.5254 | Train: 30.57% | ★Test: 22.52%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 026 [LR: 0.000250] -> Loss: 2.5062 | Train: 33.02% | ★Test: 20.38%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 0.00% (0/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 027 [LR: 0.000234] -> Loss: 2.5180 | Train: 33.70% | ★Test: 22.52%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 028 [LR: 0.000219] -> Loss: 2.4935 | Train: 31.93% | ★Test: 23.32%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 0.00% (0/12)
+Epoch 029 [LR: 0.000203] -> Loss: 2.4627 | Train: 33.70% | ★Test: 24.93%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 41.67% (5/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 030 [LR: 0.000188] -> Loss: 2.4532 | Train: 33.61% | ★Test: 24.13%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 031 [LR: 0.000173] -> Loss: 2.4319 | Train: 35.39% | ★Test: 25.74%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 032 [LR: 0.000158] -> Loss: 2.4067 | Train: 37.42% | ★Test: 23.59%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 33.33% (4/12)
+Epoch 033 [LR: 0.000144] -> Loss: 2.3954 | Train: 36.32% | ★Test: 25.20%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 034 [LR: 0.000130] -> Loss: 2.4019 | Train: 37.50% | ★Test: 27.88%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 035 [LR: 0.000116] -> Loss: 2.3740 | Train: 37.42% | ★Test: 26.54%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 8.33% (1/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 036 [LR: 0.000103] -> Loss: 2.3658 | Train: 39.10% | ★Test: 26.27%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 037 [LR: 0.000091] -> Loss: 2.3480 | Train: 40.03% | ★Test: 26.81%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 8.33% (1/12)
+Epoch 038 [LR: 0.000079] -> Loss: 2.3401 | Train: 38.85% | ★Test: 26.01%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 039 [LR: 0.000068] -> Loss: 2.3367 | Train: 40.20% | ★Test: 27.35%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 41.67% (5/12)
+Epoch 040 [LR: 0.000057] -> Loss: 2.3300 | Train: 38.94% | ★Test: 28.15%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 041 [LR: 0.000048] -> Loss: 2.3072 | Train: 40.88% | ★Test: 28.15%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 042 [LR: 0.000039] -> Loss: 2.3072 | Train: 41.55% | ★Test: 28.15%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 043 [LR: 0.000031] -> Loss: 2.3108 | Train: 42.06% | ★Test: 27.35%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 044 [LR: 0.000024] -> Loss: 2.2822 | Train: 42.82% | ★Test: 28.15%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 045 [LR: 0.000018] -> Loss: 2.2932 | Train: 40.88% | ★Test: 27.88%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 046 [LR: 0.000012] -> Loss: 2.2873 | Train: 43.50% | ★Test: 28.42%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 16.67% (2/12)
+Epoch 047 [LR: 0.000008] -> Loss: 2.2665 | Train: 42.65% | ★Test: 28.42%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 048 [LR: 0.000004] -> Loss: 2.2821 | Train: 43.33% | ★Test: 28.15%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 049 [LR: 0.000002] -> Loss: 2.2746 | Train: 42.65% | ★Test: 28.15%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 25.00% (3/12)
+Epoch 050 [LR: 0.000000] -> Loss: 2.2837 | Train: 42.40% | ★Test: 28.15%
+   🔍 [Target Class Accuracy Monitoring (Fast Verifier)]
+      Original Class 14: 16.67% (2/12)
+      Original Class 36: 25.00% (3/12)

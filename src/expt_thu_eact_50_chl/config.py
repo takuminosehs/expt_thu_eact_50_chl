@@ -17,3 +17,7 @@ HW_DENOISED_NOPSI_DATA_DIR = PROJECT_ROOT / "experiments" / "260706_7" / "result
 # オーギュメンテーションなし、極性マップ統合、速度ベース4ch
 PROCESSED_DATA_DIR_260707_1 = PROJECT_ROOT / "experiments" / "260707_1" / "processed_data"
 PROCESSED_DATA_DIR_260710_9 = PROJECT_ROOT / "experiments" / "260710_9" / "processed_data"
+
+# ノーマルフロー計算機
+VEC_KM_FLOW_DIR = PROJECT_ROOT / "src" / "expt_thu_eact_50_chl" / "VecKM_flow"
+MODEL_DIR = VEC_KM_FLOW_DIR / "640x480_24ms_C64_k8"
