@@ -1,5 +1,7 @@
 # my setting
 data/
+data_hardvs/
+data_thu_eact_50/
 processed_data/
 *.npy
 *.mp4
